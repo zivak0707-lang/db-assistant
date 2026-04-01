@@ -1,0 +1,18 @@
+{
+  "name": "db-assistant-server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "groq-sdk": "^1.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

@@ -1,0 +1,38 @@
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: black;
+  padding: 20px 0;
+  position: relative;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 300s linear infinite;
+  gap: 50px;
+}
+
+.infiniteText {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  flex-shrink: 0;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Опціонально: додаємо ефект при наведенні для паузи
+.wrapper:hover .track {
+  animation-play-state: paused;
+} */
