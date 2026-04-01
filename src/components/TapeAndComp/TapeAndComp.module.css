@@ -36,3 +36,25 @@
 .wrapper:hover .track {
   animation-play-state: paused;
 } */
+
+.helloWrap {
+  display: flex;
+  align-items: center;
+  background-image: url("../../assets/hello.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.description {
+  z-index: 1000000;
+  text-align: center;
+  padding: 190px 75px;
+  font-family: Helvetica;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 40px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
