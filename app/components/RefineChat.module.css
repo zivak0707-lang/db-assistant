@@ -1,0 +1,151 @@
+.wrapper {
+  margin-top: 24px;
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.header {
+  padding: 12px 20px;
+  border-bottom: 1px solid #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.headerTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #f3f4f6;
+}
+
+.headerSub {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* Messages */
+.messages {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 256px;
+  overflow-y: auto;
+}
+
+.msgRow { display: flex; }
+.msgRowUser { justify-content: flex-end; }
+.msgRowAi { justify-content: flex-start; }
+
+.bubble {
+  max-width: 320px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.bubbleUser {
+  background-color: #1d4ed8;
+  color: #fff;
+}
+
+.bubbleAi {
+  background-color: #1f2937;
+  color: #e5e7eb;
+}
+
+.bubbleError {
+  background-color: #1c0303;
+  color: #fca5a5;
+  border: 1px solid #7f1d1d;
+}
+
+/* Input area */
+.inputArea {
+  padding: 16px 20px;
+  border-top: 1px solid #1f2937;
+}
+
+.inputRow {
+  display: flex;
+  gap: 8px;
+}
+
+.input {
+  flex: 1;
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #f3f4f6;
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: inherit;
+}
+.input::placeholder { color: #6b7280; }
+.input:focus { border-color: #3b82f6; }
+.input:disabled { opacity: 0.5; }
+
+.sendBtn {
+  background-color: #2563eb;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  flex-shrink: 0;
+  transition: background-color 0.15s;
+}
+.sendBtn:hover { background-color: #3b82f6; }
+
+.sendBtnDisabled {
+  background-color: #374151 !important;
+  color: #6b7280 !important;
+  cursor: not-allowed;
+}
+
+.error {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #f87171;
+}
+
+.limitMsg {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #fbbf24;
+}
+
+/* Hints */
+.hints {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hintBtn {
+  font-size: 11px;
+  color: #6b7280;
+  background: none;
+  border: 1px solid #374151;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.hintBtn:hover {
+  color: #d1d5db;
+  border-color: #6b7280;
+}
+
+.hintBtnDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

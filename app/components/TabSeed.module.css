@@ -1,0 +1,84 @@
+.empty {
+  text-align: center;
+  padding: 32px 0;
+}
+
+.emptyText {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 16px;
+}
+
+.generateBtn {
+  background-color: #15803d;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.generateBtn:hover { background-color: #16a34a; }
+.generateBtnDisabled {
+  background-color: #374151 !important;
+  color: #6b7280 !important;
+  cursor: not-allowed;
+}
+
+/* Result view */
+.wrapper {}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.label { font-size: 11px; color: #6b7280; }
+
+.actions { display: flex; gap: 8px; }
+
+.btnSecondary {
+  font-size: 11px;
+  background-color: #374151;
+  color: #d1d5db;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.btnSecondary:hover { background-color: #4b5563; }
+
+.btnGreen {
+  font-size: 11px;
+  background-color: #15803d;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.btnGreen:hover { background-color: #16a34a; }
+
+.btnDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.code {
+  font-size: 11px;
+  color: #d1d5db;
+  background-color: #1f2937;
+  padding: 16px;
+  border-radius: 8px;
+  overflow: auto;
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre;
+  font-family: monospace;
+}

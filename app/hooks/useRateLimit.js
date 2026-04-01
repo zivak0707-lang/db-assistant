@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
-import { RateStatus, formatTime } from '../types'
+import { formatTime } from '../types'
 
 export function useRateLimit() {
-  const [rateStatus, setRateStatus] = useState<RateStatus>('ok')
-  const [retryAfter, setRetryAfter] = useState<number | null>(null)
-  const [countdown, setCountdown] = useState<number | null>(null)
-  const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const [rateStatus, setRateStatus] = useState('ok')
+  const [retryAfter, setRetryAfter] = useState(null)
+  const [countdown, setCountdown] = useState(null)
+  const countdownRef = useRef(null)
 
   useEffect(() => {
     if (!retryAfter || retryAfter <= 0) return
@@ -18,7 +18,7 @@ export function useRateLimit() {
     countdownRef.current = setInterval(() => {
       setCountdown(prev => {
         if (prev === null || prev <= 1) {
-          clearInterval(countdownRef.current!)
+          clearInterval(countdownRef.current)
           setRateStatus('ok')
           setRetryAfter(null)
           return null
@@ -32,7 +32,7 @@ export function useRateLimit() {
     }
   }, [retryAfter])
 
-  function handleRateLimit(data: { rateLimited?: boolean; retryAfter?: number | null }) {
+  function handleRateLimit(data) {
     if (data.rateLimited) {
       setRateStatus('limited')
       if (data.retryAfter) setRetryAfter(data.retryAfter)
@@ -40,7 +40,6 @@ export function useRateLimit() {
   }
 
   const isLimited = rateStatus === 'limited'
-
   const countdownLabel = countdown !== null ? formatTime(countdown) : null
 
   return {

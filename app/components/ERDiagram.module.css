@@ -1,0 +1,16 @@
+.outer {
+  width: 100%;
+  overflow: auto;
+}
+
+.inner {
+  min-height: 256px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder {
+  font-size: 13px;
+  color: #6b7280;
+}

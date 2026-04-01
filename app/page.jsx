@@ -10,39 +10,39 @@ import TabSQL from './components/TabSQL'
 import TabSeed from './components/TabSeed'
 import TabNormalize from './components/TabNormalize'
 import RefineChat from './components/RefineChat'
+import s from './page.module.css'
 
 const TABS = [
-  { id: 'er', label: '📊 ER-діаграма' },
-  { id: 'tables', label: '📋 Таблиці' },
-  { id: 'sql', label: '💾 SQL код' },
-  { id: 'seed', label: '🌱 Тестові дані' },
+  { id: 'er',        label: '📊 ER-діаграма' },
+  { id: 'tables',    label: '📋 Таблиці' },
+  { id: 'sql',       label: '💾 SQL код' },
+  { id: 'seed',      label: '🌱 Тестові дані' },
   { id: 'normalize', label: '🔍 Нормалізація' },
-] as const
+]
 
 export default function Home() {
   const db = useDBAssistant()
   const { rateLimit, history } = db
 
   return (
-    <main className="min-h-screen bg-gray-950 text-gray-100">
+    <main className={s.main}>
       <div ref={db.topRef} />
 
       <Header
-        onLogoClick={db.scrollToTop}
+        onLogoClick={db.resetToHome}
         rateStatus={rateLimit.isLimited ? 'limited' : 'ok'}
         countdown={rateLimit.countdown}
         historyCount={history.history.length}
         onHistoryClick={() => history.setShowHistory(!history.showHistory)}
       />
 
-      <div className="max-w-5xl mx-auto px-6 py-8">
+      <div className={s.content}>
 
         {history.showHistory && (
           <HistoryPanel
             history={history.history}
             onLoad={item => {
-              db.setDomain(item.domain)
-              db.setDbType(item.dbType)
+              db.loadFromHistory(item)
               history.setShowHistory(false)
             }}
             onClear={history.clear}
@@ -62,33 +62,29 @@ export default function Home() {
         />
 
         {db.result?.explanation && (
-          <div className="bg-blue-950 border border-blue-800 rounded-xl px-5 py-4 mb-6">
-            <div className="text-xs text-blue-400 font-medium mb-1">💡 Пояснення структури від AI</div>
-            <p className="text-sm text-blue-100 leading-relaxed">{db.result.explanation}</p>
+          <div className={s.explanation}>
+            <div className={s.explanationLabel}>💡 Пояснення структури від AI</div>
+            <p className={s.explanationText}>{db.result.explanation}</p>
           </div>
         )}
 
         {db.result && (
-          <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+          <div className={s.resultCard}>
 
-            {/* Tabs */}
-            <div className="flex border-b border-gray-800 overflow-x-auto">
+            {/* Tabs nav */}
+            <div className={s.tabs}>
               {TABS.map(tab => (
                 <button
                   key={tab.id}
                   onClick={() => db.setActiveTab(tab.id)}
-                  className={`px-4 py-3 text-xs font-medium transition-colors whitespace-nowrap ${
-                    db.activeTab === tab.id
-                      ? 'text-blue-400 border-b-2 border-blue-500 bg-gray-800'
-                      : 'text-gray-500 hover:text-gray-300'
-                  }`}
+                  className={`${s.tab} ${db.activeTab === tab.id ? s.tabActive : ''}`}
                 >
                   {tab.label}
                 </button>
               ))}
             </div>
 
-            <div className="p-6">
+            <div className={s.tabContent}>
               {db.activeTab === 'er' && (
                 <TabER
                   diagram={db.result.er_diagram}
@@ -118,6 +114,7 @@ export default function Home() {
                   copied={db.copied}
                   onCopy={db.copySQL}
                   onDownload={db.downloadSQL}
+                  onSQLChange={db.updateSQL}
                 />
               )}
 

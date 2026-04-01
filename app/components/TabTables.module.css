@@ -1,0 +1,121 @@
+.wrapper { display: flex; flex-direction: column; gap: 24px; }
+
+.hint {
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: -8px;
+}
+
+/* Table block */
+.tableBlock {
+  border: 1px solid #374151;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tableHeader {
+  background-color: #1f2937;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tableName {
+  font-size: 13px;
+  font-weight: 500;
+  color: #60a5fa;
+}
+
+.tableDesc {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.addColBtn {
+  margin-left: auto;
+  font-size: 11px;
+  background-color: #14532d;
+  color: #86efac;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.addColBtn:hover { background-color: #166534; }
+
+/* Table itself */
+.table {
+  width: 100%;
+  font-size: 11px;
+  border-collapse: collapse;
+}
+
+.theadRow {
+  border-bottom: 1px solid #374151;
+  color: #6b7280;
+}
+
+.th {
+  text-align: left;
+  padding: 8px 16px;
+  font-weight: 500;
+}
+
+.thAction {
+  padding: 8px;
+  width: 32px;
+}
+
+.row {
+  border-bottom: 1px solid #1f2937;
+  transition: background-color 0.15s;
+}
+.row:hover { background-color: rgba(31, 41, 55, 0.5); }
+.row:hover .removeBtn { opacity: 1; }
+
+.td { padding: 8px 16px; }
+
+.tdAction { padding: 8px; text-align: center; }
+
+/* Cell value */
+.cellValue {
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  display: inline-block;
+  transition: background-color 0.15s;
+}
+.cellValue:hover { background-color: #374151; }
+
+.cellName { font-family: monospace; color: #4ade80; }
+.cellType { color: #facc15; }
+.cellConstraints { color: #c084fc; }
+.cellDescription { color: #9ca3af; }
+
+/* Edit input */
+.editInput {
+  width: 100%;
+  background-color: #374151;
+  border: 1px solid #3b82f6;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  color: #fff;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Remove button */
+.removeBtn {
+  opacity: 0;
+  color: #ef4444;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: opacity 0.15s, color 0.15s;
+  padding: 0;
+}
+.removeBtn:hover { color: #f87171; }

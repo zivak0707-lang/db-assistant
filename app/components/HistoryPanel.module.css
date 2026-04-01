@@ -1,0 +1,76 @@
+.wrapper {
+  background-color: #111827;
+  border: 1px solid #374151;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #f3f4f6;
+}
+
+.clearBtn {
+  font-size: 11px;
+  color: #f87171;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s;
+  padding: 0;
+}
+.clearBtn:hover { color: #fca5a5; }
+
+.list { display: flex; flex-direction: column; gap: 8px; }
+
+.item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  background-color: #1f2937;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.item:hover { background-color: #374151; }
+
+.itemRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.itemDomain {
+  font-size: 13px;
+  color: #e5e7eb;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.itemBadge {
+  font-size: 11px;
+  background-color: #1e3a5f;
+  color: #93c5fd;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.itemDate {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+}

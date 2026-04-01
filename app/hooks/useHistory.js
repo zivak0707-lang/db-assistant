@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react'
-import { HistoryItem, DBResult } from '../types'
 
 const STORAGE_KEY = 'db-assistant-history'
 const MAX_ITEMS = 5
 
 export function useHistory() {
-  const [history, setHistory] = useState<HistoryItem[]>([])
+  const [history, setHistory] = useState([])
   const [showHistory, setShowHistory] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved) { try { setHistory(JSON.parse(saved)) } catch {} }
+    if (saved) {
+      try { setHistory(JSON.parse(saved)) } catch {}
+    }
   }, [])
 
-  function save(domain: string, dbType: string, result: DBResult) {
-    const item: HistoryItem = {
+  function save(domain, dbType, result) {
+    const item = {
       id: Date.now().toString(),
       domain,
       dbType,

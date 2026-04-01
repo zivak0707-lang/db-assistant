@@ -1,0 +1,130 @@
+.empty {
+  text-align: center;
+  padding: 32px 0;
+}
+
+.emptyText { font-size: 13px; color: #9ca3af; margin-bottom: 8px; }
+.emptySubText { font-size: 11px; color: #6b7280; margin-bottom: 16px; }
+
+.checkBtn {
+  background-color: #7e22ce;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.checkBtn:hover { background-color: #9333ea; }
+.checkBtnDisabled {
+  background-color: #374151 !important;
+  color: #6b7280 !important;
+  cursor: not-allowed;
+}
+
+/* Score card */
+.wrapper { display: flex; flex-direction: column; gap: 16px; }
+
+.scoreCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background-color: #1f2937;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.scoreBlock { text-align: center; min-width: 48px; }
+
+.scoreNum { font-size: 30px; font-weight: 700; }
+.scoreMax { font-size: 11px; color: #6b7280; }
+
+.scoreGreen { color: #4ade80; }
+.scoreYellow { color: #facc15; }
+.scoreRed { color: #f87171; }
+
+.scoreInfo { flex: 1; }
+.scoreLevel { font-size: 13px; font-weight: 500; color: #f3f4f6; }
+.scoreSummary { font-size: 11px; color: #9ca3af; margin-top: 4px; }
+
+.recheckBtn {
+  font-size: 11px;
+  background-color: #374151;
+  color: #d1d5db;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  flex-shrink: 0;
+}
+.recheckBtn:hover { background-color: #4b5563; }
+.recheckBtnDisabled { opacity: 0.5; cursor: not-allowed; }
+
+/* No issues */
+.noIssues {
+  padding: 16px;
+  background-color: #052e16;
+  border: 1px solid #14532d;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #4ade80;
+}
+
+/* Issues */
+.issues { display: flex; flex-direction: column; gap: 12px; }
+
+.issuesTitle { font-size: 11px; font-weight: 500; color: #9ca3af; }
+
+.issueCard {
+  padding: 16px;
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+}
+
+.issueTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.issueForm {
+  font-size: 11px;
+  background-color: #451a03;
+  color: #fde68a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.issueTable { font-size: 13px; font-weight: 500; color: #60a5fa; }
+
+.fixBtn {
+  margin-left: auto;
+  font-size: 11px;
+  background-color: #4c1d95;
+  color: #ddd6fe;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.15s;
+  flex-shrink: 0;
+}
+.fixBtn:hover { background-color: #5b21b6; }
+.fixBtnDisabled {
+  background-color: #374151 !important;
+  color: #6b7280 !important;
+  cursor: not-allowed;
+}
+
+.issueProblem { font-size: 11px; color: #f87171; margin-bottom: 4px; }
+.issueSuggestion { font-size: 11px; color: #4ade80; }

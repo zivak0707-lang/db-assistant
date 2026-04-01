@@ -1,0 +1,74 @@
+.wrapper {}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.labelGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.label { font-size: 11px; color: #6b7280; }
+
+/* Bug 2 fix: підказка що поле редагується */
+.editHint {
+  font-size: 10px;
+  color: #4b5563;
+  font-style: italic;
+}
+
+.actions { display: flex; gap: 8px; }
+
+.btnSecondary {
+  font-size: 11px;
+  background-color: #374151;
+  color: #d1d5db;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.btnSecondary:hover { background-color: #4b5563; }
+
+.btnPrimary {
+  font-size: 11px;
+  background-color: #1d4ed8;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.btnPrimary:hover { background-color: #2563eb; }
+
+/* Bug 2 fix: editable textarea замість <pre> */
+.codeEditor {
+  width: 100%;
+  min-height: 320px;
+  font-size: 12px;
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  color: #d1d5db;
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 16px;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+  white-space: pre;
+  overflow: auto;
+}
+.codeEditor:focus {
+  border-color: #3b82f6;
+}

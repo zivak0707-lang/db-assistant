@@ -1,39 +1,36 @@
 import { useState, useEffect, useRef } from 'react'
-import {
-  Column, DBResult, NormalizeIssue, NormalizeResult,
-  ChatMessage, EditingCell, formatTime
-} from '../types'
+import { formatTime } from '../types'
 import { useHistory } from './useHistory'
 import { useRateLimit } from './useRateLimit'
 
 export function useDBAssistant() {
   const [domain, setDomain] = useState('')
   const [dbType, setDbType] = useState('MySQL')
-  const [result, setResult] = useState<DBResult | null>(null)
+  const [result, setResult] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [activeTab, setActiveTab] = useState<'er' | 'tables' | 'sql' | 'seed' | 'normalize'>('er')
+  const [activeTab, setActiveTab] = useState('er')
 
   const [refineMsg, setRefineMsg] = useState('')
   const [refineLoading, setRefineLoading] = useState(false)
   const [refineError, setRefineError] = useState('')
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([])
+  const [chatHistory, setChatHistory] = useState([])
 
   const [seedSQL, setSeedSQL] = useState('')
   const [seedLoading, setSeedLoading] = useState(false)
   const [seedCopied, setSeedCopied] = useState(false)
   const [copied, setCopied] = useState(false)
 
-  const [normalizeResult, setNormalizeResult] = useState<NormalizeResult | null>(null)
+  const [normalizeResult, setNormalizeResult] = useState(null)
   const [normalizeLoading, setNormalizeLoading] = useState(false)
-  const [fixingIssue, setFixingIssue] = useState<number | null>(null)
+  const [fixingIssue, setFixingIssue] = useState(null)
 
-  const [editingCell, setEditingCell] = useState<EditingCell | null>(null)
+  const [editingCell, setEditingCell] = useState(null)
   const [editValue, setEditValue] = useState('')
 
-  const chatEndRef = useRef<HTMLDivElement>(null)
-  const topRef = useRef<HTMLDivElement>(null)
-  const erRef = useRef<HTMLDivElement>(null)
+  const chatEndRef = useRef(null)
+  const topRef = useRef(null)
+  const erRef = useRef(null)
 
   const history = useHistory()
   const rateLimit = useRateLimit()
@@ -46,13 +43,62 @@ export function useDBAssistant() {
     topRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  function loadFromHistory(item: Parameters<typeof history.save>[2] extends DBResult ? never : Parameters<ReturnType<typeof useHistory>['save']>[2] extends DBResult ? never : DBResult, domain: string, dbType: string) {
-    // handled below
+  // Bug 4 fix: logo click повністю скидає стан і повертає на початок
+  function resetToHome() {
+    setDomain('')
+    setResult(null)
+    setError('')
+    setSeedSQL('')
+    setNormalizeResult(null)
+    setChatHistory([])
+    setEditingCell(null)
+    setRefineMsg('')
+    setRefineError('')
+    setActiveTab('er')
+    scrollToTop()
+  }
+
+  // Bug 1 helper: генерує SQL з поточного стану таблиць без виклику AI
+  function generateSQLFromTables(tables, dbTypeStr) {
+    const syntaxMap = {
+      MySQL:      { pk: 'INT AUTO_INCREMENT PRIMARY KEY', strType: 'VARCHAR(255)' },
+      PostgreSQL: { pk: 'SERIAL PRIMARY KEY',            strType: 'VARCHAR(255)' },
+      SQLite:     { pk: 'INTEGER PRIMARY KEY AUTOINCREMENT', strType: 'TEXT' },
+    }
+    const syn = syntaxMap[dbTypeStr] || syntaxMap.MySQL
+
+    return tables.map(table => {
+      const cols = table.columns.map(col => {
+        const colType = col.type || syn.strType
+        const constraints = col.constraints
+          ? col.constraints.includes('PRIMARY KEY')
+            ? col.constraints
+            : col.constraints
+          : ''
+        return `  ${col.name} ${colType}${constraints ? ' ' + constraints : ''}`
+      }).join(',\n')
+      return `CREATE TABLE ${table.name} (\n${cols}\n);`
+    }).join('\n\n')
+  }
+
+  // Bug 3 fix: завантаження з історії відновлює повний result, а не лише domain
+  function loadFromHistory(item) {
+    setDomain(item.domain)
+    setDbType(item.dbType)
+    setResult(item.result)
+    setSeedSQL('')
+    setNormalizeResult(null)
+    setChatHistory([])
+    setEditingCell(null)
+    setRefineMsg('')
+    setRefineError('')
+    setActiveTab('er')
+    scrollToTop()
   }
 
   // --- API helpers ---
 
-  async function callAPI(url: string, body: object) {
+  async function callAPI(url, body) {
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -89,7 +135,7 @@ export function useDBAssistant() {
       setResult(data)
       setActiveTab('er')
       history.save(domain, dbType, data)
-    } catch (e: unknown) {
+    } catch (e) {
       setError(e instanceof Error ? e.message : 'Невідома помилка')
     } finally {
       setLoading(false)
@@ -98,7 +144,7 @@ export function useDBAssistant() {
 
   // --- Уточнення схеми ---
 
-  async function callRefine(message: string, currentResult: DBResult) {
+  async function callRefine(message, currentResult) {
     return callAPI('/api/refine', {
       currentSchema: {
         er_diagram: currentResult.er_diagram,
@@ -110,7 +156,7 @@ export function useDBAssistant() {
     })
   }
 
-  function applyRefineResult(data: DBResult) {
+  function applyRefineResult(data) {
     setResult(prev => prev ? {
       ...prev,
       er_diagram: data.er_diagram || prev.er_diagram,
@@ -136,7 +182,7 @@ export function useDBAssistant() {
       const data = await callRefine(msg, result)
       applyRefineResult(data)
       setChatHistory(prev => [...prev, { role: 'ai', text: data.explanation || 'Схему оновлено ✓' }])
-    } catch (e: unknown) {
+    } catch (e) {
       const errMsg = e instanceof Error ? e.message : 'Помилка'
       setRefineError(errMsg)
       setChatHistory(prev => [...prev, { role: 'ai', text: `❌ ${errMsg}` }])
@@ -145,7 +191,7 @@ export function useDBAssistant() {
     }
   }
 
-  async function fixIssueWithAI(issue: NormalizeIssue, idx: number) {
+  async function fixIssueWithAI(issue, idx) {
     if (!result) return
     setFixingIssue(idx)
     setEditingCell(null)
@@ -156,7 +202,7 @@ export function useDBAssistant() {
       const data = await callRefine(message, result)
       applyRefineResult(data)
       setChatHistory(prev => [...prev, { role: 'ai', text: data.explanation || 'Виправлено ✓ Натисни "Перевірити знову"' }])
-    } catch (e: unknown) {
+    } catch (e) {
       setChatHistory(prev => [...prev, { role: 'ai', text: `❌ ${e instanceof Error ? e.message : 'Помилка'}` }])
     } finally {
       setFixingIssue(null)
@@ -172,7 +218,7 @@ export function useDBAssistant() {
     try {
       const data = await callAPI('/api/seed', { tables: result.tables, dbType: result.dbType || dbType })
       setSeedSQL(data.seed_sql)
-    } catch (e: unknown) {
+    } catch (e) {
       setSeedSQL(`-- Помилка: ${e instanceof Error ? e.message : 'Невідома помилка'}`)
     } finally {
       setSeedLoading(false)
@@ -186,7 +232,7 @@ export function useDBAssistant() {
     try {
       const data = await callAPI('/api/normalize', { tables: result.tables })
       setNormalizeResult(data)
-    } catch (e: unknown) {
+    } catch (e) {
       console.error(e)
     } finally {
       setNormalizeLoading(false)
@@ -195,7 +241,7 @@ export function useDBAssistant() {
 
   // --- Редагування таблиць ---
 
-  function startEdit(tableIdx: number, colIdx: number, field: keyof Column) {
+  function startEdit(tableIdx, colIdx, field) {
     if (!result) return
     const col = result.tables[tableIdx]?.columns[colIdx]
     if (!col) return
@@ -208,33 +254,33 @@ export function useDBAssistant() {
     const { tableIdx, colIdx, field } = editingCell
     setResult(prev => {
       if (!prev) return prev
-      return {
-        ...prev,
-        tables: prev.tables.map((t, ti) =>
-          ti !== tableIdx ? t : {
-            ...t,
-            columns: t.columns.map((c, ci) =>
-              ci !== colIdx ? c : { ...c, [field]: editValue }
-            )
-          }
-        )
-      }
+      const updatedTables = prev.tables.map((t, ti) =>
+        ti !== tableIdx ? t : {
+          ...t,
+          columns: t.columns.map((c, ci) =>
+            ci !== colIdx ? c : { ...c, [field]: editValue }
+          )
+        }
+      )
+      // Bug 1 fix: регенеруємо SQL синхронно з оновленими таблицями
+      const updatedSQL = generateSQLFromTables(updatedTables, prev.dbType || 'MySQL')
+      return { ...prev, tables: updatedTables, sql: updatedSQL }
     })
     setEditingCell(null)
   }
 
-  function addColumn(tableIdx: number) {
+  function addColumn(tableIdx) {
     if (!result) return
-    const newCol: Column = { name: 'new_column', type: 'VARCHAR(255)', constraints: 'NOT NULL', description: 'нова колонка' }
+    const newCol = { name: 'new_column', type: 'VARCHAR(255)', constraints: 'NOT NULL', description: 'нова колонка' }
     const newColIdx = result.tables[tableIdx].columns.length
     setResult(prev => {
       if (!prev) return prev
-      return {
-        ...prev,
-        tables: prev.tables.map((t, i) =>
-          i !== tableIdx ? t : { ...t, columns: [...t.columns, newCol] }
-        )
-      }
+      const updatedTables = prev.tables.map((t, i) =>
+        i !== tableIdx ? t : { ...t, columns: [...t.columns, newCol] }
+      )
+      // Bug 1 fix: оновлюємо SQL одразу при додаванні колонки
+      const updatedSQL = generateSQLFromTables(updatedTables, prev.dbType || 'MySQL')
+      return { ...prev, tables: updatedTables, sql: updatedSQL }
     })
     setTimeout(() => {
       setEditingCell({ tableIdx, colIdx: newColIdx, field: 'name' })
@@ -242,16 +288,16 @@ export function useDBAssistant() {
     }, 50)
   }
 
-  function removeColumn(tableIdx: number, colIdx: number) {
+  function removeColumn(tableIdx, colIdx) {
     if (editingCell?.tableIdx === tableIdx && editingCell?.colIdx === colIdx) setEditingCell(null)
     setResult(prev => {
       if (!prev) return prev
-      return {
-        ...prev,
-        tables: prev.tables.map((t, i) =>
-          i !== tableIdx ? t : { ...t, columns: t.columns.filter((_, ci) => ci !== colIdx) }
-        )
-      }
+      const updatedTables = prev.tables.map((t, i) =>
+        i !== tableIdx ? t : { ...t, columns: t.columns.filter((_, ci) => ci !== colIdx) }
+      )
+      // Bug 1 fix: оновлюємо SQL після видалення колонки
+      const updatedSQL = generateSQLFromTables(updatedTables, prev.dbType || 'MySQL')
+      return { ...prev, tables: updatedTables, sql: updatedSQL }
     })
   }
 
@@ -264,7 +310,12 @@ export function useDBAssistant() {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  function downloadFile(content: string, filename: string, type = 'text/plain') {
+  // Bug 2 fix: дозволяємо користувачу редагувати SQL вручну
+  function updateSQL(newSQL) {
+    setResult(prev => prev ? { ...prev, sql: newSQL } : prev)
+  }
+
+  function downloadFile(content, filename, type = 'text/plain') {
     const blob = new Blob([content], { type })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -299,7 +350,6 @@ export function useDBAssistant() {
   }
 
   return {
-    // Стан
     domain, setDomain,
     dbType, setDbType,
     result,
@@ -319,15 +369,13 @@ export function useDBAssistant() {
     fixingIssue,
     editingCell,
     editValue, setEditValue,
-    // Вкладені хуки
     history,
     rateLimit,
-    // Refs
     chatEndRef,
     topRef,
     erRef,
-    // Дії
     scrollToTop,
+    resetToHome,
     handleGenerate,
     handleRefine,
     fixIssueWithAI,
@@ -337,7 +385,9 @@ export function useDBAssistant() {
     saveEdit,
     addColumn,
     removeColumn,
+    loadFromHistory,
     copySQL,
+    updateSQL,
     copySeed,
     downloadSQL,
     downloadSeed,
