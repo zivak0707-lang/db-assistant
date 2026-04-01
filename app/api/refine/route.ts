@@ -3,53 +3,48 @@ import Groq from 'groq-sdk'
 
 const client = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
+function parseRetryAfter(errorMessage: string): number | null {
+  const match = errorMessage.match(/Please try again in (\d+)m([\d.]+)s/)
+  if (match) return parseInt(match[1]) * 60 + parseFloat(match[2])
+  const secMatch = errorMessage.match(/Please try again in ([\d.]+)s/)
+  if (secMatch) return parseFloat(secMatch[1])
+  return null
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { currentSchema, userMessage, dbType = 'MySQL' } = await req.json()
-
     if (!currentSchema || !userMessage) {
       return NextResponse.json({ error: 'Відсутня схема або повідомлення' }, { status: 400 })
     }
-    if (userMessage.trim().length < 3) {
-      return NextResponse.json({ error: 'Повідомлення занадто коротке' }, { status: 400 })
-    }
 
     const systemPrompt = `You are a database design expert helping to refine an existing database schema.
-The user will provide their current schema and a request to modify it.
-Return ONLY valid JSON in the same format as the original schema — no text, no markdown.
+Return ONLY valid JSON in the same format — no text, no markdown.
 
 Format:
 {
   "er_diagram": "erDiagram\\n...",
   "tables": [...],
   "sql": "CREATE TABLE ...;",
-  "explanation": "Що було змінено і чому (українською)"
+  "explanation": "Що змінено (українською)"
 }
 
 Rules:
-- Keep all existing tables unless user explicitly asks to remove them
+- Keep existing tables unless asked to remove them
 - ALL table/column names in English snake_case ONLY
 - Generate SQL for: ${dbType}
-- Return complete updated schema, not just the changes
+- Return complete updated schema
 - ONLY JSON`
-
-    const userPrompt = `Current schema:
-${JSON.stringify(currentSchema, null, 2)}
-
-User request: ${userMessage.trim()}
-
-Update the schema according to the request and return the complete updated version.`
 
     const controller = new AbortController()
     const timeout = setTimeout(() => controller.abort(), 30000)
-
     let response
     try {
       response = await client.chat.completions.create({
         model: 'llama-3.3-70b-versatile',
         messages: [
           { role: 'system', content: systemPrompt },
-          { role: 'user', content: userPrompt }
+          { role: 'user', content: `Current schema:\n${JSON.stringify(currentSchema, null, 2)}\n\nRequest: ${userMessage.trim()}` }
         ],
         response_format: { type: 'json_object' },
         temperature: 0.3,
@@ -76,7 +71,12 @@ Update the schema according to the request and return the complete updated versi
     if (error instanceof Error && error.name === 'AbortError') {
       return NextResponse.json({ error: 'Час очікування вичерпано.' }, { status: 504 })
     }
-    console.error('Refine Error:', error instanceof Error ? error.message : String(error))
+    const errMsg = error instanceof Error ? error.message : String(error)
+    if (errMsg.includes('rate_limit_exceeded') || errMsg.includes('429')) {
+      const retryAfter = parseRetryAfter(errMsg)
+      return NextResponse.json({ error: 'Ліміт запитів вичерпано', rateLimited: true, retryAfter }, { status: 429 })
+    }
+    console.error('Refine Error:', errMsg)
     return NextResponse.json({ error: 'Помилка уточнення. Спробуйте ще раз.' }, { status: 500 })
   }
 }

@@ -3,10 +3,17 @@ import Groq from 'groq-sdk'
 
 const client = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
+function parseRetryAfter(errorMessage: string): number | null {
+  const match = errorMessage.match(/Please try again in (\d+)m([\d.]+)s/)
+  if (match) return parseInt(match[1]) * 60 + parseFloat(match[2])
+  const secMatch = errorMessage.match(/Please try again in ([\d.]+)s/)
+  if (secMatch) return parseFloat(secMatch[1])
+  return null
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { tables, dbType = 'MySQL' } = await req.json()
-
     if (!tables || !Array.isArray(tables) || tables.length === 0) {
       return NextResponse.json({ error: 'Таблиці не передані' }, { status: 400 })
     }
@@ -15,31 +22,24 @@ export async function POST(req: NextRequest) {
 Return ONLY valid JSON — no text, no markdown.
 
 Format:
-{
-  "seed_sql": "-- Test data\\nINSERT INTO table1 ...;\\nINSERT INTO table2 ...;"
-}
+{ "seed_sql": "-- Test data\\nINSERT INTO table1 ...;\\nINSERT INTO table2 ...;" }
 
 Rules:
-- Generate 5 realistic rows per table
+- 5 realistic rows per table
 - Use proper SQL syntax for ${dbType}
-- Respect foreign key relationships — insert parent rows first
-- Use realistic Ukrainian names, emails, dates where appropriate
-- Column names are in English, but values can be realistic data
+- Respect foreign key order — parent tables first
+- Use realistic Ukrainian names and data
 - ONLY JSON`
-
-    const userPrompt = `Generate INSERT test data for these tables:
-${JSON.stringify(tables, null, 2)}`
 
     const controller = new AbortController()
     const timeout = setTimeout(() => controller.abort(), 30000)
-
     let response
     try {
       response = await client.chat.completions.create({
         model: 'llama-3.3-70b-versatile',
         messages: [
           { role: 'system', content: systemPrompt },
-          { role: 'user', content: userPrompt }
+          { role: 'user', content: `Generate INSERT data for:\n${JSON.stringify(tables, null, 2)}` }
         ],
         response_format: { type: 'json_object' },
         temperature: 0.7,
@@ -66,7 +66,12 @@ ${JSON.stringify(tables, null, 2)}`
     if (error instanceof Error && error.name === 'AbortError') {
       return NextResponse.json({ error: 'Час очікування вичерпано.' }, { status: 504 })
     }
-    console.error('Seed Error:', error instanceof Error ? error.message : String(error))
+    const errMsg = error instanceof Error ? error.message : String(error)
+    if (errMsg.includes('rate_limit_exceeded') || errMsg.includes('429')) {
+      const retryAfter = parseRetryAfter(errMsg)
+      return NextResponse.json({ error: 'Ліміт запитів вичерпано', rateLimited: true, retryAfter }, { status: 429 })
+    }
+    console.error('Seed Error:', errMsg)
     return NextResponse.json({ error: 'Помилка генерації даних. Спробуйте ще раз.' }, { status: 500 })
   }
 }

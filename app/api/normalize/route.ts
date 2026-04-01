@@ -3,50 +3,50 @@ import Groq from 'groq-sdk'
 
 const client = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
+function parseRetryAfter(errorMessage: string): number | null {
+  const match = errorMessage.match(/Please try again in (\d+)m([\d.]+)s/)
+  if (match) return parseInt(match[1]) * 60 + parseFloat(match[2])
+  const secMatch = errorMessage.match(/Please try again in ([\d.]+)s/)
+  if (secMatch) return parseFloat(secMatch[1])
+  return null
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { tables } = await req.json()
-
     if (!tables || !Array.isArray(tables) || tables.length === 0) {
       return NextResponse.json({ error: 'Таблиці не передані' }, { status: 400 })
     }
 
     const systemPrompt = `You are a database normalization expert.
-Analyze the given database schema and check its normal forms.
+Analyze the schema and check normal forms.
 Return ONLY valid JSON — no text, no markdown.
 
 Format:
 {
-  "overall": "1NF" | "2NF" | "3NF" | "BCNF",
+  "overall": "3NF",
   "score": 85,
   "issues": [
-    {
-      "table": "table_name",
-      "form": "2NF",
-      "problem": "опис проблеми українською",
-      "suggestion": "як виправити українською"
-    }
+    { "table": "name", "form": "2NF", "problem": "опис українською", "suggestion": "рекомендація українською" }
   ],
-  "summary": "загальний висновок українською (2-3 речення)"
+  "summary": "загальний висновок українською"
 }
 
 Rules:
-- overall = lowest normal form achieved by the entire schema
-- score = 0-100, how well normalized the schema is
-- issues = list of normalization problems found (empty array if none)
-- Be specific about which columns cause issues
+- overall = lowest normal form achieved
+- score = 0-100
+- issues = empty array if no problems
 - ONLY JSON`
 
     const controller = new AbortController()
     const timeout = setTimeout(() => controller.abort(), 30000)
-
     let response
     try {
       response = await client.chat.completions.create({
         model: 'llama-3.3-70b-versatile',
         messages: [
           { role: 'system', content: systemPrompt },
-          { role: 'user', content: `Analyze this schema:\n${JSON.stringify(tables, null, 2)}` }
+          { role: 'user', content: `Analyze:\n${JSON.stringify(tables, null, 2)}` }
         ],
         response_format: { type: 'json_object' },
         temperature: 0.2,
@@ -69,7 +69,12 @@ Rules:
     if (error instanceof Error && error.name === 'AbortError') {
       return NextResponse.json({ error: 'Час очікування вичерпано.' }, { status: 504 })
     }
-    console.error('Normalize Error:', error instanceof Error ? error.message : String(error))
+    const errMsg = error instanceof Error ? error.message : String(error)
+    if (errMsg.includes('rate_limit_exceeded') || errMsg.includes('429')) {
+      const retryAfter = parseRetryAfter(errMsg)
+      return NextResponse.json({ error: 'Ліміт запитів вичерпано', rateLimited: true, retryAfter }, { status: 429 })
+    }
+    console.error('Normalize Error:', errMsg)
     return NextResponse.json({ error: 'Помилка аналізу. Спробуйте ще раз.' }, { status: 500 })
   }
 }

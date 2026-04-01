@@ -40,6 +40,17 @@ Rules:
 
 const ALLOWED_DB_TYPES = ['MySQL', 'PostgreSQL', 'SQLite']
 
+// Парсимо retry-after з помилки Groq
+function parseRetryAfter(errorMessage: string): number | null {
+  const match = errorMessage.match(/Please try again in (\d+)m([\d.]+)s/)
+  if (match) {
+    return parseInt(match[1]) * 60 + parseFloat(match[2])
+  }
+  const secMatch = errorMessage.match(/Please try again in ([\d.]+)s/)
+  if (secMatch) return parseFloat(secMatch[1])
+  return null
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
@@ -98,7 +109,17 @@ export async function POST(req: NextRequest) {
     if (error instanceof Error && error.name === 'AbortError') {
       return NextResponse.json({ error: 'Час очікування вичерпано. Спробуйте ще раз.' }, { status: 504 })
     }
-    console.error('API Error:', error instanceof Error ? error.message : String(error))
+    // Обробка ліміту Groq
+    const errMsg = error instanceof Error ? error.message : String(error)
+    if (errMsg.includes('rate_limit_exceeded') || errMsg.includes('429')) {
+      const retryAfter = parseRetryAfter(errMsg)
+      return NextResponse.json({
+        error: 'Ліміт запитів вичерпано',
+        rateLimited: true,
+        retryAfter,
+      }, { status: 429 })
+    }
+    console.error('API Error:', errMsg)
     return NextResponse.json({ error: 'Помилка генерації. Спробуйте ще раз.' }, { status: 500 })
   }
 }
