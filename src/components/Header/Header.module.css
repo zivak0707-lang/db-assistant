@@ -195,18 +195,6 @@
   color: #fff;
 }
 
-.buttonProject {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 24px;
-  background-color: #95b3ff;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  border: none;
-  padding: 16px 20px;
-}
 
 .buttonLinkMenu {
   font-family: Helvetica;
