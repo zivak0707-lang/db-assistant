@@ -2,7 +2,7 @@ import React from "react";
 import { formatTime } from "../../types";
 import s from "./Header.module.css";
 import image from "../../assets/index.js";
-
+import { Link } from "react-router-dom";
 
 export default function Header({
   onLogoClick,
@@ -14,10 +14,9 @@ export default function Header({
   const isLimited = rateStatus === "limited";
 
   return (
-    <div className="container">
+    <div className={s.container}>
       <header className={s.header}>
         <div className={s.inner}>
-          
           <a href="#" onClick={onLogoClick} className={s.logo}>
             <img src={image.logo} alt="logo" />
             <div className={s.logoText}>
@@ -39,7 +38,7 @@ export default function Header({
               Команда
             </a>
           </div>
-          <div className={s.controls}>
+          {/* <div className={s.controls}>
             <div className={s.status}>
               <div
                 className={`${s.statusBadge} ${isLimited ? s.statusLimited : s.statusOk}`}
@@ -57,7 +56,13 @@ export default function Header({
                 </button>
               )}
             </div>
-          </div>
+          </div> */}
+          <button className={s.buttonProject}>
+            <Link to="/main" className={s.buttonLinkMenu}>
+              <p className={s.buttonLinkMenu}></p>Спробувати
+            </Link>
+            <img src={image.arrow} alt="Arrow" />
+          </button>
         </div>
 
         {isLimited && (

@@ -1,7 +1,5 @@
 import React from "react";
 import { useDBAssistant } from "./hooks/useDBAssistant";
-import { useHistory } from "./hooks/useHistory";       // adjust import paths
-import { useRateLimit } from "./hooks/useRateLimit";   // adjust import paths
 import HistoryPanel from "./components/HistoryPanel/HistoryPanel";
 import InputSection from "./components/InputSection/InputSection";
 import TabER from "./components/TabER/TabER";
@@ -22,8 +20,7 @@ const TABS = [
 
 const MainPage = () => {
   const db = useDBAssistant();
-  const history = useHistory();       // use your actual hook name
-  const rateLimit = useRateLimit();   // use your actual hook name
+  const { history, rateLimit } = db;
 
   return (
     <main className={styles.main}>

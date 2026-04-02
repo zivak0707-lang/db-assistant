@@ -1,3 +1,13 @@
+.container {
+  width: 100vw;
+  max-width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 75px 109px;
+  display: flex;
+  justify-content: center;
+}
+
 .header {
   padding: 36px 0 48px 0;
   max-width: 1331px;
@@ -15,6 +25,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
 /* Logo */
@@ -182,4 +193,28 @@
 }
 .limitCountdown strong {
   color: #fff;
+}
+
+.buttonProject {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background-color: #95b3ff;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  padding: 16px 20px;
+}
+
+.buttonLinkMenu {
+  font-family: Helvetica;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: black;
 }

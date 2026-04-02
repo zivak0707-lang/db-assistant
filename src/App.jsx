@@ -18,29 +18,23 @@ import MainPage from "./MainPage.jsx";
 
 
 
-export default function App() {
-  const db = useDBAssistant();
-  const { rateLimit, history } = db;
+const LandingPage = () => (
+  <main className={styles.main}>
+    <div className={styles.HeaderAndHero}>
+      <Header />
+      <Hero />
+    </div>
+    <TapeAndComp />
+  </main>
+);
 
+export default function App() {
   return (
-    <main className={styles.main}>
-      <div ref={db.topRef} />
-      <div className={styles.HeaderAndHero}>
-        <Header
-          onLogoClick={db.resetToHome}
-          rateStatus={rateLimit.isLimited ? "limited" : "ok"}
-          countdown={rateLimit.countdown}
-          historyCount={history.history.length}
-          onHistoryClick={() => history.setShowHistory(!history.showHistory)}
-        />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Hero />} />
-            <Route path="/main" element={<MainPage />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-      <TapeAndComp></TapeAndComp>
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/main" element={<MainPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
