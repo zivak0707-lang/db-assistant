@@ -12,20 +12,19 @@
 
 .demoTabs {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 28px;
+  justify-content: space-between;
 }
 
 .demoButton {
   padding: 8px 16px;
-  border: 1px solid #2a2a3a;
-  border-radius: 6px;
-  background: transparent;
+  border: 1px solid #95B3FF;
+  background: #121731;
   color: #888;
   font-size: 13px;
   cursor: pointer;
   transition: all 0.2s;
+  width: 125px;
 }
 
 .demoButton:hover {
@@ -34,15 +33,17 @@
 }
 
 .demoButtonActive {
-  border-color: #fff;
+  padding: 8px 16px;
+  border-color: #000000;
   color: #fff;
-  background: #1a1a2e;
+  background: #95B3FF;
 }
 
 .demoContent {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  width: 679px;
 }
 
 .demoLabel {
@@ -65,9 +66,9 @@
 
 /* ── Prompt Studio ── */
 .promptStudio {
-  border: 1px solid #667BB4;
+  border: 1px solid #667bb4;
   overflow: hidden;
-  width: 659px;
+  width: 679px;
 }
 .promptHeader {
   display: flex;
@@ -75,7 +76,7 @@
   gap: 10px;
   padding: 10px 16px;
   background: #121731;
-  border-bottom: 1px solid #667BB4;
+  border-bottom: 1px solid #667bb4;
 }
 .promptDots {
   display: flex;
@@ -115,7 +116,7 @@
   gap: 8px;
 }
 .promptPlaceholder {
-  color: #636C7A;
+  color: #636c7a;
   font-size: 16px;
   font-weight: 400;
 }
@@ -133,24 +134,23 @@
   display: flex;
   justify-content: space-between;
   padding: 12px 16px;
-  background: #111120;
   border-top: 1px solid #2a2a3a;
-  color: #888;
+  color: white;
   font-size: 12px;
 }
 
 /* ── ER ── */
 .erPreview {
   display: flex;
-  border: 1px solid #2a2a3a;
-  border-radius: 8px;
+  border: 1px solid #56689B;
   overflow: hidden;
-  background: #0e0e1a;
+  background: #121731;
+  width: 679px;
 }
 .erEntities {
   min-width: 160px;
   padding: 16px;
-  border-right: 1px solid #2a2a3a;
+  border-right: 1px solid #56689B;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -158,21 +158,20 @@
 .erEntitiesTitle {
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: #6c63ff;
+  color: white;
   margin-bottom: 4px;
 }
 .erEntity {
   padding: 8px 12px;
-  border: 1px solid #2a2a3a;
-  border-radius: 6px;
+  border: 1px solid #56689B;
   font-size: 13px;
   font-family: monospace;
   color: #ccc;
-  background: #13131f;
+  background: #121731;
 }
 .erDiagram {
   flex: 1;
-  background: radial-gradient(circle, #1a1a2e 1px, transparent 1px) 0 0 / 20px
+  background: radial-gradient(circle, #3d3d61 1px, transparent 1px) 0 0 / 20px
     20px;
   min-height: 220px;
 }
@@ -184,15 +183,14 @@
 /* ── SQL ── */
 .sqlPreview {
   display: flex;
-  border: 1px solid #2a2a3a;
-  border-radius: 8px;
+  border: 1px solid #56689B;
   overflow: hidden;
-  background: #0e0e1a;
+  background: #121731;
 }
 .sqlDatabases {
   min-width: 150px;
   padding: 16px;
-  border-right: 1px solid #2a2a3a;
+  border-right: 1px solid #56689B;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -206,8 +204,7 @@
 .sqlDbButton {
   padding: 8px 12px;
   border: 1px solid #2a2a3a;
-  border-radius: 6px;
-  background: #13131f;
+  background: #121731;
   color: #888;
   font-size: 13px;
   cursor: pointer;
@@ -234,7 +231,7 @@
   align-items: center;
   padding: 10px 16px;
   border-bottom: 1px solid #2a2a3a;
-  background: #13131f;
+  background: #121731;
 }
 .sqlFileName {
   font-size: 13px;
@@ -244,7 +241,6 @@
 .sqlValidated {
   font-size: 11px;
   padding: 3px 10px;
-  border-radius: 12px;
   background: #1a3a1a;
   color: #34d399;
   border: 1px solid #34d399;
@@ -274,15 +270,14 @@
 .normPreview {
   display: flex;
   gap: 0;
-  border: 1px solid #2a2a3a;
-  border-radius: 8px;
+  border: 1px solid #56689B;
   overflow: hidden;
-  background: #0e0e1a;
+  background: #121731;
 }
 .normScore {
   min-width: 200px;
   padding: 20px;
-  border-right: 1px solid #2a2a3a;
+  border-right: 1px solid #56689B;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -290,12 +285,11 @@
 .normScoreTitle {
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: #6c63ff;
+  color: white;
 }
 .normScoreBox {
-  background: #13131f;
-  border: 1px solid #1a3a2a;
-  border-radius: 8px;
+  background: #121731;
+  border: 1px solid #56689B;
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
@@ -315,7 +309,7 @@
 }
 .normScoreStatus {
   font-size: 13px;
-  color: #34d399;
+  color: white;
 }
 .normChecks {
   flex: 1;
@@ -325,9 +319,8 @@
   gap: 10px;
 }
 .normCheck {
-  background: #13131f;
-  border: 1px solid #2a2a3a;
-  border-radius: 8px;
+  background: #121731;
+  border: 1px solid #56689B;
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
@@ -346,7 +339,6 @@
 .normCheckStatus {
   font-size: 11px;
   padding: 2px 10px;
-  border-radius: 12px;
   border: 1px solid;
 }
 .normCheckDesc {

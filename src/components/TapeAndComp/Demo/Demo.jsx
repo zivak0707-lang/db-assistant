@@ -179,17 +179,17 @@ const TAB_CONTENT = {
           </div>
         </div>
         <div className={s.promptFooter}>
-          <span>✅ 5 таблиць згенеровано</span>
-          <span>✅ ER-діаграма готова</span>
-          <span>✅ SQL DDL для MySQL</span>
+          <span>5 таблиць згенеровано</span>
+          <span>ER-діаграма готова</span>
+          <span>SQL DDL для MySQL</span>
         </div>
       </div>
     ),
   },
   er: {
-    label: "VISUAL MODELING",
-    title: "Зв'язки, ключі та залежності видно одразу",
-    desc: "Чистий dark UI з Mermaid-візуалізацією, мінімапою та панеллю з метаданими таблиць.",
+    // label: "VISUAL MODELING",
+    // title: "Зв'язки, ключі та залежності видно одразу",
+    // desc: "Чистий dark UI з Mermaid-візуалізацією, мінімапою та панеллю з метаданими таблиць.",
     preview: (
       <div className={s.erPreview}>
         <div className={s.erEntities}>
@@ -203,7 +203,7 @@ const TAB_CONTENT = {
           )}
         </div>
         <div className={s.erDiagram}>
-          <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg">
             <line
               x1="200"
               y1="80"
@@ -272,24 +272,24 @@ const TAB_CONTENT = {
     ),
   },
   sql: {
-    label: "DDL EDITOR",
-    title: "Редагуйте SQL вручну без втрати синхронізації",
-    desc: "Код, статус валідації та перемикання між MySQL / PostgreSQL / SQLite в одному вікні.",
+    // label: "DDL EDITOR",
+    // title: "Редагуйте SQL вручну без втрати синхронізації",
+    // desc: "Код, статус валідації та перемикання між MySQL / PostgreSQL / SQLite в одному вікні.",
     preview: <SqlPreview />,
   },
   normalization: {
-    label: "QUALITY SCORE",
-    title: "SchemaForge підсвічує слабкі місця структури",
-    desc: "1НФ, 2НФ, 3НФ, BCNF, score та рекомендації AI для покращення схеми.",
+    // label: "QUALITY SCORE",
+    // title: "SchemaForge підсвічує слабкі місця структури",
+    // desc: "1НФ, 2НФ, 3НФ, BCNF, score та рекомендації AI для покращення схеми.",
     preview: <NormalizationPreview />,
   },
 };
 
 const TABS = [
-  { key: "generation", label: "⚡ Генерація" },
-  { key: "er", label: "🗂 ER-діаграма" },
-  { key: "sql", label: "💾 SQL редактор" },
-  { key: "normalization", label: "🔍 Нормалізація" },
+  { key: "generation", label: "Генерація" },
+  { key: "er", label: "ER-діаграма" },
+  { key: "sql", label: "SQL редактор" },
+  { key: "normalization", label: "Нормалізація" },
 ];
 
 // ─── Demo ───────────────────────────────────────────────────────
@@ -299,7 +299,7 @@ const Demo = () => {
 
   return (
     <div className={s.demoContainer}>
-      <p className={s.demoTitle}>ПОБАЧТЕ SCHEMAFORGE В ДІЇ</p>
+      {/* <p className={s.demoTitle}>ПОБАЧТЕ SCHEMAFORGE В ДІЇ</p> */}
 
       <div className={s.demoTabs}>
         {TABS.map((tab) => (

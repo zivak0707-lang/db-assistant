@@ -205,19 +205,11 @@ const TapeAndComp = () => {
           </div>
         </div>
         <div className={s.demoContainer}>
-          {/* <div>
+          <div className={s.demoDescription}>
             <p className={s.demoTitle}>ПОБАЧТЕ SCHEMAFORGE В ДІЇ</p>
-          </div>
-          <div>
-            <button className={s.demoButton}>Генерація</button>
-            <button className={s.demoButton}>ER-діаграма</button>
-            <button className={s.demoButton}>SQL редактор</button>
-            <button className={s.demoButton}>Нормалізація</button>
-          </div>
-          <div>
-            <div className={s.demoDecs}>
+            <div className={s.demoDescriptionWrap}>
               <p className={s.demoItem}>input → output</p>
-              <p className={s.workType}>
+              <p className={s.demoText}>
                 AI будує схему з текстового опису за секунди
               </p>
               <p className={s.demoItem}>
@@ -225,8 +217,7 @@ const TapeAndComp = () => {
                 артефактів без перемикань між інструментами.
               </p>
             </div>
-            <div></div>
-          </div> */}
+          </div>
           <Demo />
         </div>
       </div>
