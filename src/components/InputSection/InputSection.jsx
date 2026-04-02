@@ -12,7 +12,7 @@ export default function InputSection({
     if (loading) return '⏳ Генерація...'
     if (isLimited && countdown) return `⏳ Доступно через ${countdown}с`
     if (isLimited) return '⏳ Ліміт вичерпано'
-    return '✨ Згенерувати базу даних'
+    return 'Згенерувати базу даних'
   }
 
   return (

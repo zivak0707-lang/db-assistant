@@ -4,19 +4,19 @@
   background-color: #030712;
   color: #f3f4f6;
   position: relative;
+  background-image: url("./assets/mainPageBG.svg");
 }
 
 .content {
   max-width: 1440px;
   height: 100%;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 32px 24px 112px 24px;
 }
 
 .explanation {
   background-color: #0c1a3a;
   border: 1px solid #1e3a5f;
-  border-radius: 12px;
   padding: 16px 20px;
   margin-bottom: 24px;
 }
@@ -36,24 +36,22 @@
 }
 
 .resultCard {
-  background-color: #111827;
-  border: 1px solid #1f2937;
-  border-radius: 12px;
+  background-color: #121731;
+  border: 1px solid #6377AF;
   overflow: hidden;
 }
 
 .tabs {
   display: flex;
-  border-bottom: 1px solid #1f2937;
-  overflow-x: auto;
+  border-bottom: 2px solid #6377AF;
 }
 
 .tab {
   padding: 12px 16px;
   font-size: 11px;
   font-weight: 500;
-  color: #6b7280;
-  background: none;
+  color: white;
+  background: #121731;
   border: none;
   cursor: pointer;
   white-space: nowrap;
@@ -67,9 +65,9 @@
 }
 
 .tabActive {
-  color: #60a5fa;
+  color: black;
   border-bottom-color: #3b82f6;
-  background-color: #1f2937;
+  background-color: #95B3FF;
 }
 
 .tabContent {
@@ -97,7 +95,6 @@
   cursor: pointer;
 }
 
-
 .wrapper {
   width: 100%;
   overflow: hidden;
@@ -121,4 +118,170 @@
   text-transform: uppercase;
   color: black;
   flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.15s;
+  padding: 0;
+}
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logoBadge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.logoText {
+  text-align: left;
+}
+
+.logoTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f3f4f6;
+  margin: 0;
+}
+
+.logoSub {
+  font-size: 11px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.controlsStatus {
+  display: flex;
+  align-items: column;
+  gap: 12px;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.links {
+  font-family: Helvetica;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.statusBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.statusOk {
+  border-color: #14532d;
+  background-color: #052e16;
+  color: #4ade80;
+}
+
+.statusLimited {
+  border-color: #7f1d1d;
+  background-color: #1c0303;
+  color: #f87171;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+}
+
+.dotOk {
+  background-color: #22c55e;
+  animation: pulse 2s infinite;
+}
+
+.dotLimited {
+  background-color: #ef4444;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.historyBtn {
+  font-size: 11px;
+  color: #9ca3af;
+  border: 1px solid #374151;
+  padding: 6px 12px;
+  background: none;
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+}
+.historyBtn:hover {
+  color: #e5e7eb;
+  border-color: #6b7280;
+}
+
+/* Limit bar */
+.limitBar {
+  max-width: 1024px;
+  margin: 8px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.limitText {
+  color: #f87171;
+  font-size: 11px;
+}
+
+.limitCountdown {
+  color: #fca5a5;
+  font-size: 11px;
+}
+.limitCountdown strong {
+  color: #fff;
 }

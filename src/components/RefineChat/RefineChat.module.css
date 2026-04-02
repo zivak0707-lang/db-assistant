@@ -1,14 +1,13 @@
 .wrapper {
   margin-top: 24px;
-  background-color: #111827;
-  border: 1px solid #1f2937;
-  border-radius: 12px;
+  background-color: #121731;
+  border: 1px solid #6377AF;
   overflow: hidden;
 }
 
 .header {
   padding: 12px 20px;
-  border-bottom: 1px solid #1f2937;
+  border-bottom: 1px solid #6377AF;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -22,7 +21,7 @@
 
 .headerSub {
   font-size: 11px;
-  color: #6b7280;
+  color: white;
 }
 
 /* Messages */
@@ -78,7 +77,6 @@
   flex: 1;
   background-color: #1f2937;
   border: 1px solid #374151;
-  border-radius: 8px;
   padding: 8px 16px;
   font-size: 13px;
   color: #f3f4f6;
@@ -94,7 +92,6 @@
   background-color: #2563eb;
   color: #fff;
   padding: 8px 16px;
-  border-radius: 8px;
   border: none;
   cursor: pointer;
   font-size: 13px;
@@ -136,7 +133,6 @@
   background: none;
   border: 1px solid #374151;
   padding: 4px 8px;
-  border-radius: 4px;
   cursor: pointer;
   transition: color 0.15s, border-color 0.15s;
 }

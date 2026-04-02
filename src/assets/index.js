@@ -13,6 +13,7 @@ import roma from "./roma.png";
 import serioga from "./serioga.png";
 import imageBottom from "./imageBottom.svg";
 import teamLogo from "./teamLogo.svg";
+import mainPageBG from "./mainPageBG.svg";
 
 export default {
   logo,
@@ -30,4 +31,5 @@ export default {
   serioga,
   imageBottom,
   teamLogo,
+  mainPageBG,
 };

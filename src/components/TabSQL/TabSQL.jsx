@@ -7,7 +7,7 @@ export default function TabSQL({ sql, dbType, copied, onCopy, onDownload, onSQLC
       <div className={styles.topRow}>
         <div className={styles.labelGroup}>
           <span className={styles.label}>{dbType} DDL</span>
-          <span className={styles.editHint}>✏️ Можна редагувати вручну</span>
+          <span className={styles.editHint}>Можна редагувати вручну</span>
         </div>
         <div className={styles.actions}>
           <button onClick={onCopy} className={styles.btnSecondary}>

@@ -316,12 +316,32 @@ const TapeAndComp = () => {
           </p>
           <p>Безкоштовно. Без реєстрації. Перший результат за 3 секунди</p>
           <div className={s.buttonWrap}>
-            <button className={s.buttonProject}>
-              <Link to="/main" className={s.buttonLinkMenu}>
-                <p className={s.buttonLinkMenu}></p>Відкрити демо
-              </Link>
-              <img src={image.arrow} alt="Arrow" />
-            </button>
+            <Link to="/main" style={{ textDecoration: "none" }}>
+              <svg
+                width="220"
+                height="60"
+                viewBox="0 0 220 60"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14 0 L206 0 L206 14 L220 14 L220 46 L206 46 L206 60 L14 60 L14 46 L0 46 L0 14 L14 14 Z"
+                  fill="#95B3FF"
+                />
+                <text
+                  x="105"
+                  y="31"
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fill="#0a0a1a"
+                  fontSize="16"
+                  fontWeight="400"
+                  fontFamily="Helvetica"
+                >
+                  Відкрити демо →
+                </text>
+              </svg>
+            </Link>
             <p className={s.buttonLinkGitText}>
               або переглянь код на {""}
               <a

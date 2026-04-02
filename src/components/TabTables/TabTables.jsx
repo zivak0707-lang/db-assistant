@@ -15,7 +15,7 @@ export default function TabTables({
   return (
     <div className={styles.wrapper}>
       <div className={styles.hint}>
-        💡 Натисни на комірку щоб редагувати → Enter зберегти, Escape скасувати
+        Натисни на комірку щоб редагувати → Enter зберегти, Escape скасувати
       </div>
 
       {tables.map((table, ti) => (

@@ -15,7 +15,7 @@ export default function RefineChat({
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <span className={styles.headerTitle}>💬 Уточнити схему</span>
+        <span className={styles.headerTitle}>Уточнити схему</span>
         <span className={styles.headerSub}>— попроси AI змінити структуру</span>
       </div>
 

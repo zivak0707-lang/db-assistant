@@ -1,5 +1,4 @@
 .hero {
-  /* background-image: url("../../assets/vectorHero.svg"); */
   padding-top: 200px;
   padding-bottom: 400px;
   display: flex;
@@ -8,7 +7,6 @@
   text-align: center;
   height: 748px;
 }
-
 
 .title {
   font-family: Helvetica;
@@ -19,7 +17,7 @@
   line-height: 100%;
   letter-spacing: 0%;
   text-transform: uppercase;
-   background: -webkit-linear-gradient(#D4DBEF, #3F66D3);
+  background: -webkit-linear-gradient(#D4DBEF, #3F66D3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -32,51 +30,14 @@
   leading-trim: NONE;
   line-height: 100%;
   letter-spacing: 0%;
-  padding:  20px 0 40px 0;
+  padding: 20px 0 40px 0;
 }
 
-.buttons{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-}
-
-.buttonProject {
+.buttons {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 4px;
-  padding: 12px 24px;
-  background-color: #95b3ff;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  border: none;
-  height: 60px;
-}
-
-.buttonLinkMenu {
-  font-weight: 400;
-  font-size: 16px;
-  color: black;
-}
-
-.buttonGit {
-    /* border: 1px solid #95b3ff; */
-    background: none;
-    padding: 16px 20px;
-}
-
-.buttonLinkGit{
-    font-family: Helvetica;
-    font-weight: 400;
-    font-style: Regular;
-    font-size: 16px;
-    leading-trim: NONE;
-    line-height: 100%;
-    letter-spacing: 0%;
-    color: white;
-    
+  gap: 20px;
 }
 
 .buttonProject {
@@ -97,6 +58,10 @@
     calc(100% - 14px) 0%,
     calc(100% - 14px) 14px,
     100% 14px,
+    100% calc(50% - 14px),
+    calc(100% + 14px) calc(50% - 14px),
+    calc(100% + 14px) calc(50% + 14px),
+    100% calc(50% + 14px),
     100% calc(100% - 14px),
     calc(100% - 14px) calc(100% - 14px),
     calc(100% - 14px) 100%,
@@ -106,4 +71,21 @@
     0% 14px,
     14px 14px
   );
+}
+
+.buttonLinkMenu {
+  font-weight: 400;
+  font-size: 16px;
+  color: black;
+}
+
+.buttonLinkGit {
+  font-family: Helvetica;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: white;
 }
