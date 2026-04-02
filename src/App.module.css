@@ -79,3 +79,17 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.scrollTopBtn {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  width: 48px;
+  height: 48px;
+  border: 2px solid #95b3ff;
+  background: #253c6a;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { formatTime } from "../../types";
 import s from "./Header.module.css";
 import image from "../../assets/index.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export default function Header({
   onLogoClick,
@@ -12,6 +12,21 @@ export default function Header({
   onHistoryClick,
 }) {
   const isLimited = rateStatus === "limited";
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollToSection = (id) => {
+    if (location.pathname === "/") {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  };
 
   return (
     <div className={s.container}>
@@ -23,41 +38,23 @@ export default function Header({
               <h1 className={s.logoTitle}>SchemaForge</h1>
               <p className={s.logoSub}>by coders.exe</p>
             </div>
-            
           </a>
+
           <div className={s.navLinks}>
-            <a href="#" className={s.navLink}>
+            <a href="#features" onClick={(e) => { e.preventDefault(); scrollToSection("features"); }} className={s.navLink}>
               Можливості
             </a>
-            <a href="#" className={s.navLink}>
+            <a href="#how-it-works" onClick={(e) => { e.preventDefault(); scrollToSection("how-it-works"); }} className={s.navLink}>
               Як працює
             </a>
-            <a href="#" className={s.navLink}>
+            <a href="#tech-stack" onClick={(e) => { e.preventDefault(); scrollToSection("tech-stack"); }} className={s.navLink}>
               Стек
             </a>
-            <a href="#" className={s.navLink}>
+            <a href="#team" onClick={(e) => { e.preventDefault(); scrollToSection("team"); }} className={s.navLink}>
               Команда
             </a>
           </div>
-          {/* <div className={s.controls}>
-            <div className={s.status}>
-              <div
-                className={`${s.statusBadge} ${isLimited ? s.statusLimited : s.statusOk}`}
-              >
-                <div
-                  className={`${s.statusDot} ${isLimited ? s.dotLimited : s.dotOk}`}
-                />
-                {isLimited
-                  ? `Ліміт вичерпано${countdown ? ` · ${formatTime(countdown)}` : ""}`
-                  : "AI готовий"}
-              </div>
-              {historyCount > 0 && (
-                <button onClick={onHistoryClick} className={s.historyBtn}>
-                  🕐 Історія ({historyCount})
-                </button>
-              )}
-            </div>
-          </div> */}
+
           <button className={s.buttonProject}>
             <Link to="/main" className={s.buttonLinkMenu}>
               <p className={s.buttonLinkMenu}></p>Спробувати

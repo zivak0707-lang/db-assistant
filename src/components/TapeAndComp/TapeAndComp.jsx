@@ -21,7 +21,7 @@ const TapeAndComp = () => {
         </div>
       </div>
       <div className={s.containerHello}>
-        <div className={s.helloWrap}>
+        <div className={s.helloWrap} id="features">
           <p className={s.description}>
             Опишіть предметну область звичайною мовою — SchemaForge збудує
             ER-діаграму, SQL-схему та тестові дані автоматично. Без зайвих
@@ -93,7 +93,7 @@ const TapeAndComp = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div id="how-it-works">
             <p className={s.howItWorks}>ЯК ЦЕ ПРАЦЮЄ?</p>
             <div className={s.whyBoxes}>
               <div className={s.howBox}>
@@ -181,7 +181,7 @@ const TapeAndComp = () => {
           </div>
         </div>
       </div>
-      <div className={s.techWrapConteiner}>
+      <div className={s.techWrapConteiner} id="tech-stack">
         <div className={s.techContainer}>
           <p className={s.tehcTitle}>ТЕХНІЧНИЙ СТЕК</p>
           <div className={s.techItems}>
@@ -222,7 +222,7 @@ const TapeAndComp = () => {
           <Demo />
         </div>
       </div>
-      <div className={s.teamContainer}>
+      <div className={s.teamContainer} id="team">
         <p className={s.teamTitle}>КОМАНДА CODERS.EXE</p>
         <div className={s.teamImages}>
           <div className={s.devImgBlock}>
