@@ -179,6 +179,29 @@ const TapeAndComp = () => {
           </div>
         </div>
       </div>
+      <div className={s.techContainer}>
+        <p className={s.tehcTitle}>ТЕХНІЧНИЙ СТЕК</p>
+        <div className={s.techItems}>
+          <p className={s.workType}>Frontend</p>
+          <div className={s.techItemsWrap}>
+            <div className={s.techItem}>Next.js 16 App Router</div>
+            <div className={s.techItem}>React 19 UI core</div>
+            <div className={s.techItem}>TypeScript Type safety</div>
+            <div className={s.techItem}>CSS Modules Scoped styling</div>
+            <div className={s.techItem}>Mermaid.js ER rendering</div>
+          </div>
+        </div>
+        <div className={s.techItems}>
+          <p className={s.workType}>AI & INFRA</p>
+          <div className={s.techItemsWrap}>
+            <div className={s.techItem}>Groq API Inference</div>
+            <div className={s.techItem}>LLaMA 3.3 70B Reasoning model</div>
+            <div className={s.techItem}>JavaScript Runtime</div>
+            <div className={s.techItem}>Node.js Server layer</div>
+            <div className={s.techItem}>Vercel Deploy</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
