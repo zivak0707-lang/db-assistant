@@ -23,6 +23,7 @@ export default function Header({
               <h1 className={s.logoTitle}>SchemaForge</h1>
               <p className={s.logoSub}>by coders.exe</p>
             </div>
+            
           </a>
           <div className={s.navLinks}>
             <a href="#" className={s.navLink}>
