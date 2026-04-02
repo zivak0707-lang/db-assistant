@@ -55,13 +55,8 @@
 }
 
 .buttonLinkMenu {
-  font-family: Helvetica;
   font-weight: 400;
-  font-style: Regular;
   font-size: 16px;
-  leading-trim: NONE;
-  line-height: 100%;
-  letter-spacing: 0%;
   color: black;
 }
 
@@ -81,4 +76,33 @@
     letter-spacing: 0%;
     color: white;
     
+}
+
+.buttonProject {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 32px;
+  background: #95B3FF;
+  font-weight: 400;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+
+  clip-path: polygon(
+    14px 0%,
+    calc(100% - 14px) 0%,
+    calc(100% - 14px) 14px,
+    100% 14px,
+    100% calc(100% - 14px),
+    calc(100% - 14px) calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    14px 100%,
+    14px calc(100% - 14px),
+    0% calc(100% - 14px),
+    0% 14px,
+    14px 14px
+  );
 }

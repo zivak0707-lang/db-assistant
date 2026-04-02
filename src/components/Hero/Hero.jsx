@@ -11,11 +11,12 @@ const Hero = () => {
         <p className={s.description}>Від опису до бази даних за 3 секунди</p>
         <div className={s.buttons}>
           <button className={s.buttonProject}>
-            <Link to="/main" className={s.buttonLinkMenu}>
-              <p className={s.buttonLinkMenu}></p>Відкрити демо
+            <Link to="/main" className={s.buttonProject}>
+              Відкрити демо              
             </Link>
             <img src={image.arrow} alt="Arrow" />
           </button>
+
           <button className={s.buttonGit}>
             <a
               href="https://github.com/zivak0707-lang/db-assistant"
@@ -31,4 +32,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

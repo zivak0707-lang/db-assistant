@@ -546,3 +546,85 @@
   top: 398px;
   left: 10px;
 }
+
+.buttonProject {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background-color: #95b3ff;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  padding: 16px 20px;
+}
+
+.buttonLinkMenu {
+  font-weight: 400;
+  font-size: 16px;
+  color: black;
+}
+
+.title {
+  background: #ebedf5;
+  background: linear-gradient(to right, #ebedf5 0%, #515fa9 96%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 400;
+  font-size: 40px;
+  text-align: center;
+}
+
+.container {
+  width: 100vw;
+  max-width: 1440px;
+  padding: 100px 109px;
+}
+
+.perFooter {
+  background: #0a0d21;
+  background: radial-gradient(
+    circle,
+    rgba(10, 13, 33, 1) 53%,
+    rgba(84, 116, 177, 1) 100%
+  );
+  padding: 100px 109px;
+  margin: 100px 109px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  max-width: 1440px;
+}
+
+.preFooterWrap {
+  padding: 100px 109px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  background: #0a0d21;
+  background: #0a0d21;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 13, 33, 1) 53%,
+    rgba(60, 88, 145, 1) 100%
+  );
+}
+
+.buttonWrap {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonLinkGitText {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.buttonLinkGit {
+  text-decoration: underline;
+}

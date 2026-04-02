@@ -15,6 +15,7 @@ import image from "./assets/index.js";
 import TapeAndComp from "./components/TapeAndComp/TapeAndComp.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./MainPage.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 
 
@@ -25,6 +26,7 @@ const LandingPage = () => (
       <Hero />
     </div>
     <TapeAndComp />
+    <Footer></Footer>
   </main>
 );
 

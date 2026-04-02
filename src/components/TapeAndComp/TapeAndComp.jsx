@@ -2,6 +2,7 @@ import React from "react";
 import s from "./TapeAndComp.module.css";
 import image from "../../assets/index";
 import Demo from "./Demo/Demo";
+import { Link } from "react-router-dom";
 
 const TapeAndComp = () => {
   const texts = ["coders.exe", "SchemaForge"];
@@ -228,7 +229,11 @@ const TapeAndComp = () => {
             <img src={image.serioga} className={s.serioga} alt="Serioga" />
             <img src={image.imageBottom} className={s.devBottom} />
             <div>
-              <img src={image.teamLogo} className={s.teamLogo} alt="Team Logo" />
+              <img
+                src={image.teamLogo}
+                className={s.teamLogo}
+                alt="Team Logo"
+              />
             </div>
             <div className={s.teamRoles}>
               <p>Backend & AI Architect</p>
@@ -241,8 +246,12 @@ const TapeAndComp = () => {
           <div className={s.devImgBlock}>
             <img src={image.roma} className={s.serioga} alt="Roma" />
             <img src={image.imageBottom} className={s.devBottom} />
-             <div>
-              <img src={image.teamLogo} className={s.teamLogo} alt="Team Logo" />
+            <div>
+              <img
+                src={image.teamLogo}
+                className={s.teamLogo}
+                alt="Team Logo"
+              />
             </div>
             <div className={s.teamRoles}>
               <p>Frontend & Visual Developer</p>
@@ -255,8 +264,12 @@ const TapeAndComp = () => {
           <div className={s.devImgBlock}>
             <img src={image.zhenya} className={s.serioga} alt="Zhenya" />
             <img src={image.imageBottom} className={s.devBottom} />
-             <div>
-              <img src={image.teamLogo} className={s.teamLogo} alt="Team Logo" />
+            <div>
+              <img
+                src={image.teamLogo}
+                className={s.teamLogo}
+                alt="Team Logo"
+              />
             </div>
             <div className={s.teamRoles}>
               <p>UX&UI designer</p>
@@ -269,8 +282,12 @@ const TapeAndComp = () => {
           <div className={s.devImgBlock}>
             <img src={image.lilia} className={s.serioga} alt="Lilia" />
             <img src={image.imageBottom} className={s.devBottom} />
-             <div>
-              <img src={image.teamLogo} className={s.teamLogo} alt="Team Logo" />
+            <div>
+              <img
+                src={image.teamLogo}
+                className={s.teamLogo}
+                alt="Team Logo"
+              />
             </div>
             <div className={s.teamRoles}>
               <p>QA & Product Manager</p>
@@ -289,6 +306,32 @@ const TapeAndComp = () => {
               {text}
             </span>
           ))}
+        </div>
+      </div>
+      <div className={s.preFooter}>
+        <div className={s.preFooterWrap}>
+          <p className={s.title}>
+            ГОТОВІ СПРОБУВАТИ? <br></br>
+            Запустіть SchemaForge прямо зараз
+          </p>
+          <p>Безкоштовно. Без реєстрації. Перший результат за 3 секунди</p>
+          <div className={s.buttonWrap}>
+            <button className={s.buttonProject}>
+              <Link to="/main" className={s.buttonLinkMenu}>
+                <p className={s.buttonLinkMenu}></p>Відкрити демо
+              </Link>
+              <img src={image.arrow} alt="Arrow" />
+            </button>
+            <p className={s.buttonLinkGitText}>
+              або переглянь код на {""}
+              <a
+                href="https://github.com/zivak0707-lang/db-assistant"
+                className={s.buttonLinkGit}
+              >
+                GitHub
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
