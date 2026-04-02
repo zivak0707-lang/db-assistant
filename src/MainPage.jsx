@@ -21,16 +21,12 @@ const TABS = [
   { id: "normalize", label: "Нормалізація" },
 ];
 
-const MainPage = ({
-  onLogoClick,
-  rateStatus,
-  countdown,
-  historyCount,
-  onHistoryClick,
-}) => {
+const MainPage = ({ onLogoClick }) => {
   const db = useDBAssistant();
   const { history, rateLimit } = db;
-  const isLimited = rateStatus === "limited";
+  const isLimited = rateLimit.isLimited;
+  const countdown = rateLimit.countdown;
+  const historyCount = history.history.length;
 
   const texts = ["coders.exe", "SchemaForge"];
   const multiplier = 40;
@@ -50,57 +46,52 @@ const MainPage = ({
             onClear={history.clear}
           />
         )}
-        <div>
-          <div className={s.inner}>
-            <button onClick={onLogoClick} className={s.logo}>
-              <div className={s.logoBadge}>DB</div>
-              <div className={s.logoText}>
-                <h1 className={s.logoTitle}>DB Assistant</h1>
-                <p className={s.logoSub}>Генератор баз даних на основі AI</p>
+        <div>          
+          <div className={styles.headerWrap}>
+            <a href="#" onClick={onLogoClick} className={styles.logo}>
+              <img src={image.logo} alt="logo" />
+              <div className={styles.logoText}>
+                <h1 className={styles.logoTitle}>SchemaForge</h1>
+                <p className={styles.logoSub}>by coders.exe</p>
               </div>
-            </button>
-
-            <div className={s.controls}>
-            <div className={s.status}>
-              <div
-                className={`${styles.statusBadge} ${isLimited ? styles.statusLimited : styles.statusOk}`}
-              >
+            </a>
+            <div className={styles.controls}>
+              <div className={styles.status}>
                 <div
-                  className={`${styles.statusDot} ${isLimited ? styles.dotLimited : styles.dotOk}`}
-                />
-                {isLimited
-                  ? `Ліміт вичерпано${countdown ? ` · ${formatTime(countdown)}` : ""}`
-                  : "AI готовий"}
+                  className={`${styles.statusBadge} ${isLimited ? styles.statusLimited : styles.statusOk}`}
+                >
+                  <div
+                    className={`${styles.statusDot} ${isLimited ? styles.dotLimited : styles.dotOk}`}
+                  />
+                  {isLimited
+                    ? `Ліміт вичерпано${countdown ? ` · ${formatTime(countdown)}` : ""}`
+                    : "AI готовий"}
+                </div>
+                {historyCount > 0 && (
+                  <button
+                    onClick={() => history.setShowHistory(true)}
+                    className={styles.historyBtn}
+                  >
+                    🕐 Історія ({historyCount})
+                  </button>
+                )}
               </div>
-              {historyCount > 0 && (
-                <button onClick={onHistoryClick} className={styles.historyBtn}>
-                  🕐 Історія ({historyCount})
-                </button>
-              )}
             </div>
           </div>
+          {isLimited && (
+            <div className={s.limitBar}>
+              <span className={s.limitText}>
+                ⚠ Денний ліміт токенів Groq вичерпано.
+              </span>
+              {countdown !== null && (
+                <span className={s.limitCountdown}>
+                  Відновлення через: <strong>{formatTime(countdown)}</strong>
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
-        {isLimited && (
-          <div className={styles.limitBar}>
-            <span className={styles.limitText}>
-              ⚠ Денний ліміт токенів Groq вичерпано.
-            </span>
-            {countdown !== null && (
-              <span className={styles.limitCountdown}>
-                Відновлення через: <strong>{formatTime(countdown)}</strong>
-              </span>
-            )}
-          </div>
-        )}
-        </div>
-        <a href="#" onClick={onLogoClick} className={styles.logo}>
-          <img src={image.logo} alt="logo" />
-          <div className={styles.logoText}>
-            <h1 className={styles.logoTitle}>SchemaForge</h1>
-            <p className={styles.logoSub}>by coders.exe</p>
-          </div>
-        </a>
         <InputSection
           domain={db.domain}
           dbType={db.dbType}
@@ -112,15 +103,6 @@ const MainPage = ({
           onDbTypeChange={db.setDbType}
           onGenerate={db.handleGenerate}
         />
-
-        {/* {db.result?.explanation && (
-          <div className={styles.explanation}>
-            <div className={styles.explanationLabel}>
-              💡 Пояснення структури від AI
-            </div>
-            <p className={styles.explanationText}>{db.result.explanation}</p>
-          </div>
-        )} */}
 
         {db.result && (
           <div className={styles.resultCard}>
@@ -206,6 +188,7 @@ const MainPage = ({
           />
         )}
       </div>
+
       <div className={s.wrapperDemo}>
         <div className={s.trackDemo}>
           {multipliedArray.map((text, index) => (

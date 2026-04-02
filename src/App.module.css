@@ -285,3 +285,9 @@
 .limitCountdown strong {
   color: #fff;
 }
+
+.headerWrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

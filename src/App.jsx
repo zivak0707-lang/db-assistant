@@ -14,7 +14,6 @@ const LandingPage = () => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 200);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -31,7 +30,6 @@ const LandingPage = () => {
       </div>
       <TapeAndComp />
       <Footer />
-
       {showScrollTop && (
         <button className={styles.scrollTopBtn} onClick={scrollToTop}>
           ↑
@@ -41,12 +39,18 @@ const LandingPage = () => {
   );
 };
 
+function MainPageWrapper() {
+  return (
+    <MainPage onLogoClick={() => (window.location.href = "/")} />
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/main" element={<MainPage />} />
+        <Route path="/main" element={<MainPageWrapper />} />
       </Routes>
     </BrowserRouter>
   );
