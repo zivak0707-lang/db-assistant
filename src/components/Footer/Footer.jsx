@@ -35,18 +35,18 @@ const Footer = ({ onLogoClick, rateStatus, countdown, historyCount, onHistoryCli
           </a>
 
           <div className={s.navLinks}>
-            <button className={s.navLink} onClick={() => scrollToSection("features")}>
+            <a href="#features" onClick={(e) => { e.preventDefault(); scrollToSection("features"); }} className={s.navLink}>
               Можливості
-            </button>
-            <button className={s.navLink} onClick={() => scrollToSection("how-it-works")}>
+            </a>
+            <a href="#how-it-works" onClick={(e) => { e.preventDefault(); scrollToSection("how-it-works"); }} className={s.navLink}>
               Як працює
-            </button>
-            <button className={s.navLink} onClick={() => scrollToSection("tech-stack")}>
+            </a>
+            <a href="#tech-stack" onClick={(e) => { e.preventDefault(); scrollToSection("tech-stack"); }} className={s.navLink}>
               Стек
-            </button>
-            <button className={s.navLink} onClick={() => scrollToSection("team")}>
+            </a>
+            <a href="#team" onClick={(e) => { e.preventDefault(); scrollToSection("team"); }} className={s.navLink}>
               Команда
-            </button>
+            </a>
           </div>
 
           <button className={s.buttonProject}>
