@@ -1,0 +1,355 @@
+.demoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.demoTitle {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: #888;
+}
+
+.demoTabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.demoButton {
+  padding: 8px 16px;
+  border: 1px solid #2a2a3a;
+  border-radius: 6px;
+  background: transparent;
+  color: #888;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.demoButton:hover {
+  color: #ccc;
+  border-color: #4a4a6a;
+}
+
+.demoButtonActive {
+  border-color: #fff;
+  color: #fff;
+  background: #1a1a2e;
+}
+
+.demoContent {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.demoLabel {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #6c63ff;
+}
+.demoHeading {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+.demoDesc {
+  font-size: 13px;
+  color: #888;
+}
+.demoPreview {
+  margin-top: 8px;
+}
+
+/* ── Prompt Studio ── */
+.promptStudio {
+  border: 1px solid #667BB4;
+  overflow: hidden;
+  width: 659px;
+}
+.promptHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: #121731;
+  border-bottom: 1px solid #667BB4;
+}
+.promptDots {
+  display: flex;
+  gap: 6px;
+}
+.dotRed {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff5f57;
+  display: block;
+}
+.dotYellow {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #febc2e;
+  display: block;
+}
+.dotGreen {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #28c840;
+  display: block;
+}
+.promptTitle {
+  color: #888;
+  font-size: 13px;
+}
+.promptBody {
+  padding: 16px;
+  background: #121731;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.promptPlaceholder {
+  color: #636C7A;
+  font-size: 16px;
+  font-weight: 400;
+}
+.promptInput {
+  color: #ccc;
+  font-size: 13px;
+  font-family: monospace;
+}
+.promptAnalyzing {
+  color: #4caf50;
+  font-size: 13px;
+  font-family: monospace;
+}
+.promptFooter {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #111120;
+  border-top: 1px solid #2a2a3a;
+  color: #888;
+  font-size: 12px;
+}
+
+/* ── ER ── */
+.erPreview {
+  display: flex;
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0e0e1a;
+}
+.erEntities {
+  min-width: 160px;
+  padding: 16px;
+  border-right: 1px solid #2a2a3a;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.erEntitiesTitle {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #6c63ff;
+  margin-bottom: 4px;
+}
+.erEntity {
+  padding: 8px 12px;
+  border: 1px solid #2a2a3a;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: monospace;
+  color: #ccc;
+  background: #13131f;
+}
+.erDiagram {
+  flex: 1;
+  background: radial-gradient(circle, #1a1a2e 1px, transparent 1px) 0 0 / 20px
+    20px;
+  min-height: 220px;
+}
+.erDiagram svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── SQL ── */
+.sqlPreview {
+  display: flex;
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0e0e1a;
+}
+.sqlDatabases {
+  min-width: 150px;
+  padding: 16px;
+  border-right: 1px solid #2a2a3a;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sqlDbTitle {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #6c63ff;
+  margin-bottom: 4px;
+}
+.sqlDbButton {
+  padding: 8px 12px;
+  border: 1px solid #2a2a3a;
+  border-radius: 6px;
+  background: #13131f;
+  color: #888;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+.sqlDbButton:hover {
+  border-color: #6c63ff;
+  color: #ccc;
+}
+.sqlDbButtonActive {
+  border-color: #6c63ff;
+  background: #1a1a30;
+  color: #fff;
+}
+.sqlEditor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.sqlEditorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid #2a2a3a;
+  background: #13131f;
+}
+.sqlFileName {
+  font-size: 13px;
+  font-family: monospace;
+  color: #ccc;
+}
+.sqlValidated {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: #1a3a1a;
+  color: #34d399;
+  border: 1px solid #34d399;
+}
+.sqlCode {
+  padding: 16px;
+  overflow-x: auto;
+}
+.sqlCode pre {
+  margin: 0;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.sqlLine {
+  display: flex;
+  gap: 16px;
+}
+.sqlLineNum {
+  color: #444;
+  min-width: 16px;
+  text-align: right;
+  user-select: none;
+}
+
+/* ── Normalization ── */
+.normPreview {
+  display: flex;
+  gap: 0;
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0e0e1a;
+}
+.normScore {
+  min-width: 200px;
+  padding: 20px;
+  border-right: 1px solid #2a2a3a;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.normScoreTitle {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #6c63ff;
+}
+.normScoreBox {
+  background: #13131f;
+  border: 1px solid #1a3a2a;
+  border-radius: 8px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+.normScoreLabel {
+  font-size: 12px;
+  color: #888;
+}
+.normScoreValue {
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.normScoreStatus {
+  font-size: 13px;
+  color: #34d399;
+}
+.normChecks {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.normCheck {
+  background: #13131f;
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.normCheckHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.normCheckLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+.normCheckStatus {
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  border: 1px solid;
+}
+.normCheckDesc {
+  font-size: 13px;
+  color: #888;
+}

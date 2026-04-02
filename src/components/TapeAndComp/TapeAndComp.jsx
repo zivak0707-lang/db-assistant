@@ -1,13 +1,12 @@
 import React from "react";
 import s from "./TapeAndComp.module.css";
 import image from "../../assets/index";
+import Demo from "./Demo/Demo";
 
 const TapeAndComp = () => {
   const texts = ["coders.exe", "SchemaForge"];
   const multiplier = 40;
   const multipliedArray = Array(multiplier).fill(texts).flat();
-
-  const duplicatedTexts = [...texts, ...texts, ...texts, ...texts];
 
   return (
     <div>
@@ -75,46 +74,48 @@ const TapeAndComp = () => {
         </div>
       </div>
       <div className={s.whyContainer}>
-        <div>
-          <p className={s.whyText}>ЧOМУ SCHEMAFORGE</p>
-          <div className={s.whyFeatures}>
-            <div className={s.whyFeature}>
-              /01<p>Повна схема БД за 3 секунди</p>
-            </div>
-            <div className={s.whyFeature}>
-              /02<p>Автоматичний SQL для трьох СУБД</p>
-            </div>
-            <div className={s.whyFeature}>
-              /03<p>Правильні зв'язки та constraints з першого разу</p>
-            </div>
-            <div className={s.whyFeature}>
-              /04<p>Все в одному місці — діаграма, SQL, дані</p>
+        <div className={s.whyWrap}>
+          <div>
+            <p className={s.whyText}>ЧOМУ SCHEMAFORGE</p>
+            <div className={s.whyFeatures}>
+              <div className={s.whyFeature}>
+                /01<p>Повна схема БД за 3 секунди</p>
+              </div>
+              <div className={s.whyFeature}>
+                /02<p>Автоматичний SQL для трьох СУБД</p>
+              </div>
+              <div className={s.whyFeature}>
+                /03<p>Правильні зв'язки та constraints з першого разу</p>
+              </div>
+              <div className={s.whyFeature}>
+                /04<p>Все в одному місці — діаграма, SQL, дані</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <p className={s.howItWorks}>ЯК ЦЕ ПРАЦЮЄ?</p>
-          <div className={s.whyBoxes}>
-            <div className={s.howBox}>
-              /01<p>Повна схема БД за 3 секунди</p>
-              <p className={s.howAnswer}>
-                Введіть опис предметної області будь-якою мовою. Чим детальніше
-                - тим краще результат.
-              </p>
-            </div>
-            <div className={s.howBox}>
-              /02<p>Автоматичний SQL для трьох СУБД</p>
-              <p className={s.howAnswer}>
-                LLaMA 3.3 70B від Groq обробляє запит і проєктує оптимальну
-                структуру з усіма зв'язками.
-              </p>
-            </div>
-            <div className={s.howBox}>
-              /03<p>Правильні зв'язки та constraints з першого разу</p>
-              <p className={s.howAnswer}>
-                ER-діаграма, SQL DDL, тестові дані та аналіз нормалізації — за
-                ~3 секунди.
-              </p>
+          <div>
+            <p className={s.howItWorks}>ЯК ЦЕ ПРАЦЮЄ?</p>
+            <div className={s.whyBoxes}>
+              <div className={s.howBox}>
+                /01<p>Повна схема БД за 3 секунди</p>
+                <p className={s.howAnswer}>
+                  Введіть опис предметної області будь-якою мовою. Чим
+                  детальніше - тим краще результат.
+                </p>
+              </div>
+              <div className={s.howBox}>
+                /02<p>Автоматичний SQL для трьох СУБД</p>
+                <p className={s.howAnswer}>
+                  LLaMA 3.3 70B від Groq обробляє запит і проєктує оптимальну
+                  структуру з усіма зв'язками.
+                </p>
+              </div>
+              <div className={s.howBox}>
+                /03<p>Правильні зв'язки та constraints з першого разу</p>
+                <p className={s.howAnswer}>
+                  ER-діаграма, SQL DDL, тестові дані та аналіз нормалізації — за
+                  ~3 секунди.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -179,27 +180,54 @@ const TapeAndComp = () => {
           </div>
         </div>
       </div>
-      <div className={s.techContainer}>
-        <p className={s.tehcTitle}>ТЕХНІЧНИЙ СТЕК</p>
-        <div className={s.techItems}>
-          <p className={s.workType}>Frontend</p>
-          <div className={s.techItemsWrap}>
-            <div className={s.techItem}>Next.js 16 App Router</div>
-            <div className={s.techItem}>React 19 UI core</div>
-            <div className={s.techItem}>TypeScript Type safety</div>
-            <div className={s.techItem}>CSS Modules Scoped styling</div>
-            <div className={s.techItem}>Mermaid.js ER rendering</div>
+      <div className={s.techWrapConteiner}>
+        <div className={s.techContainer}>
+          <p className={s.tehcTitle}>ТЕХНІЧНИЙ СТЕК</p>
+          <div className={s.techItems}>
+            <p className={s.workType}>Frontend</p>
+            <div className={s.techItemsWrap}>
+              <div className={s.techItem}>Next.js 16 App Router</div>
+              <div className={s.techItem}>React 19 UI core</div>
+              <div className={s.techItem}>TypeScript Type safety</div>
+              <div className={s.techItem}>CSS Modules Scoped styling</div>
+              <div className={s.techItem}>Mermaid.js ER rendering</div>
+            </div>
+          </div>
+          <div className={s.techItems}>
+            <p className={s.workType}>AI & INFRA</p>
+            <div className={s.techItemsWrap}>
+              <div className={s.techItem}>Groq API Inference</div>
+              <div className={s.techItem}>LLaMA 3.3 70B Reasoning model</div>
+              <div className={s.techItem}>JavaScript Runtime</div>
+              <div className={s.techItem}>Node.js Server layer</div>
+              <div className={s.techItem}>Vercel Deploy</div>
+            </div>
           </div>
         </div>
-        <div className={s.techItems}>
-          <p className={s.workType}>AI & INFRA</p>
-          <div className={s.techItemsWrap}>
-            <div className={s.techItem}>Groq API Inference</div>
-            <div className={s.techItem}>LLaMA 3.3 70B Reasoning model</div>
-            <div className={s.techItem}>JavaScript Runtime</div>
-            <div className={s.techItem}>Node.js Server layer</div>
-            <div className={s.techItem}>Vercel Deploy</div>
+        <div className={s.demoContainer}>
+          {/* <div>
+            <p className={s.demoTitle}>ПОБАЧТЕ SCHEMAFORGE В ДІЇ</p>
           </div>
+          <div>
+            <button className={s.demoButton}>Генерація</button>
+            <button className={s.demoButton}>ER-діаграма</button>
+            <button className={s.demoButton}>SQL редактор</button>
+            <button className={s.demoButton}>Нормалізація</button>
+          </div>
+          <div>
+            <div className={s.demoDecs}>
+              <p className={s.demoItem}>input → output</p>
+              <p className={s.workType}>
+                AI будує схему з текстового опису за секунди
+              </p>
+              <p className={s.demoItem}>
+                Введення природною мовою, live progress та готовий пакет
+                артефактів без перемикань між інструментами.
+              </p>
+            </div>
+            <div></div>
+          </div> */}
+          <Demo />
         </div>
       </div>
     </div>

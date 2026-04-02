@@ -6,6 +6,7 @@ import hello from "./hello.svg";
 import TabAndComp from "./TabAndComp.svg";
 import whySchemaForge from "./whySchemaForge.svg";
 import allNeed from "./allNeed.svg";
+import techStack from "./techStack.svg";
 
 export default {
   logo,
@@ -16,4 +17,5 @@ export default {
   TabAndComp,
   whySchemaForge,
   allNeed,
+  techStack,
 };
