@@ -1,3 +1,7 @@
+.allcont {
+  background-color: #0a0e21;
+}
+
 .container {
   width: 100vw;
   max-width: 1440px;
@@ -202,21 +206,21 @@
 
 .whyContainer {
   display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-image: url(http://localhost:3000/static/media/whySchemaForge.342f2d4….svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #0a0e21;
-    width: 100vw;
-    max-width: 1440px;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 75px 109px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-image: url(http://localhost:3000/static/media/whySchemaForge.342f2d4….svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0a0e21;
+  width: 100vw;
+  max-width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 75px 109px;
 }
 
-.whyWrap{
+.whyWrap {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -410,8 +414,11 @@
   flex-direction: row;
   height: 300px;
   margin-bottom: 200px;
-  padding: 75px 102px;
-  gap: 40px;
+  max-width: 1440px;
+  width: 100%;
+  padding: 75px 0;
+  gap: 30px;
+  justify-content: center;
 }
 
 .demoTitle {
@@ -420,7 +427,7 @@
   text-align: left;
 }
 
-.demoDescriptionWrap{
+.demoDescriptionWrap {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -428,7 +435,7 @@
   padding-top: 40px;
 }
 
-.demoDescription{
+.demoDescription {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -478,4 +485,64 @@
 .demoButtonActive {
   border: 1px solid #fff; /* або твій акцентний колір */
   color: #fff;
+}
+
+.teamContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0a0e21;
+  width: 100vw;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 75px 109px;
+}
+
+.teamTitle {
+  font-weight: 400;
+  font-size: 40px;
+}
+
+.teamImages {
+  display: flex;
+  gap: 45px;
+  padding-top: 30px;
+}
+
+.devImgBlock {
+  position: relative;
+}
+
+.devBottom {
+  position: absolute;
+  top: 250px;
+  left: 0;
+}
+
+.teamLogo {
+  position: absolute;
+  top: 325px;
+  left: 10px;
+  z-index: 100;
+}
+
+.teamRoles {
+  position: absolute;
+  top: 328px;
+  left: 40px;
+  z-index: 100;
+  width: 126px;
+  text-align: left;
+}
+
+.teamDecs {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  position: absolute;
+  top: 398px;
+  left: 10px;
 }

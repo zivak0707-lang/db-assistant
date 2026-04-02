@@ -7,6 +7,12 @@ import TabAndComp from "./TabAndComp.svg";
 import whySchemaForge from "./whySchemaForge.svg";
 import allNeed from "./allNeed.svg";
 import techStack from "./techStack.svg";
+import zhenya from "./zhenya.png";
+import lilia from "./lilia.png";
+import roma from "./roma.png";
+import serioga from "./serioga.png";
+import imageBottom from "./imageBottom.svg";
+import teamLogo from "./teamLogo.svg";
 
 export default {
   logo,
@@ -18,4 +24,10 @@ export default {
   whySchemaForge,
   allNeed,
   techStack,
+  zhenya,
+  lilia,
+  roma,
+  serioga,
+  imageBottom,
+  teamLogo,
 };

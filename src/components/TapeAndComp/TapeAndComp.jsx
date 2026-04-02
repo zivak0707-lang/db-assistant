@@ -9,7 +9,7 @@ const TapeAndComp = () => {
   const multipliedArray = Array(multiplier).fill(texts).flat();
 
   return (
-    <div>
+    <div className={s.allcont}>
       <div className={s.wrapper}>
         <div className={s.track}>
           {multipliedArray.map((text, index) => (
@@ -219,6 +219,76 @@ const TapeAndComp = () => {
             </div>
           </div>
           <Demo />
+        </div>
+      </div>
+      <div className={s.teamContainer}>
+        <p className={s.teamTitle}>КОМАНДА CODERS.EXE</p>
+        <div className={s.teamImages}>
+          <div className={s.devImgBlock}>
+            <img src={image.serioga} className={s.serioga} alt="Serioga" />
+            <img src={image.imageBottom} className={s.devBottom} />
+            <div>
+              <img src={image.teamLogo} className={s.teamLogo} alt="Team Logo" />
+            </div>
+            <div className={s.teamRoles}>
+              <p>Backend & AI Architect</p>
+            </div>
+            <div className={s.teamDecs}>
+              <p>SQL Generation</p>
+              <p>AI Logic Integration</p>
+            </div>
+          </div>
+          <div className={s.devImgBlock}>
+            <img src={image.roma} className={s.serioga} alt="Roma" />
+            <img src={image.imageBottom} className={s.devBottom} />
+             <div>
+              <img src={image.teamLogo} className={s.teamLogo} alt="Team Logo" />
+            </div>
+            <div className={s.teamRoles}>
+              <p>Frontend & Visual Developer</p>
+            </div>
+            <div className={s.teamDecs}>
+              <p>Web Integration</p>
+              <p>Interface Engineering</p>
+            </div>
+          </div>
+          <div className={s.devImgBlock}>
+            <img src={image.zhenya} className={s.serioga} alt="Zhenya" />
+            <img src={image.imageBottom} className={s.devBottom} />
+             <div>
+              <img src={image.teamLogo} className={s.teamLogo} alt="Team Logo" />
+            </div>
+            <div className={s.teamRoles}>
+              <p>UX&UI designer</p>
+            </div>
+            <div className={s.teamDecs}>
+              <p>Visual Identity</p>
+              <p>Web design</p>
+            </div>
+          </div>
+          <div className={s.devImgBlock}>
+            <img src={image.lilia} className={s.serioga} alt="Lilia" />
+            <img src={image.imageBottom} className={s.devBottom} />
+             <div>
+              <img src={image.teamLogo} className={s.teamLogo} alt="Team Logo" />
+            </div>
+            <div className={s.teamRoles}>
+              <p>QA & Product Manager</p>
+            </div>
+            <div className={s.teamDecs}>
+              <p>Copywriting</p>
+              <p>Pitch Deck</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={s.wrapper}>
+        <div className={s.track}>
+          {multipliedArray.map((text, index) => (
+            <span key={index} className={s.infiniteText}>
+              {text}
+            </span>
+          ))}
         </div>
       </div>
     </div>
