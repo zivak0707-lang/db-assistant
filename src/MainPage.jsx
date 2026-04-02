@@ -9,6 +9,7 @@ import TabSeed from "./components/TabSeed/TabSeed";
 import TabNormalize from "./components/TabNormalize/TabNormalize";
 import RefineChat from "./components/RefineChat/RefineChat";
 import styles from "./App.module.css";
+import s from './components/TapeAndComp/TapeAndComp.module.css'
 
 const TABS = [
   { id: "er", label: "ER Діаграма" },
@@ -18,9 +19,15 @@ const TABS = [
   { id: "normalize", label: "Нормалізація" },
 ];
 
+
+
 const MainPage = () => {
   const db = useDBAssistant();
   const { history, rateLimit } = db;
+
+  const texts = ["coders.exe", "SchemaForge"];
+const multiplier = 40;
+const multipliedArray = Array(multiplier).fill(texts).flat();
 
   return (
     <main className={styles.main}>
@@ -141,6 +148,15 @@ const MainPage = () => {
             onSend={db.handleRefine}
           />
         )}
+      </div>
+      <div className={s.wrapperDemo}>
+        <div className={s.trackDemo}>
+          {multipliedArray.map((text, index) => (
+            <span key={index} className={s.infiniteTextDemo}>
+              {text}
+            </span>
+          ))}
+        </div>
       </div>
     </main>
   );

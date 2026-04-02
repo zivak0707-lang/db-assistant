@@ -1,11 +1,14 @@
 .main {
   min-height: 100vh;
+  height: 100%;
   background-color: #030712;
   color: #f3f4f6;
+  position: relative;
 }
 
 .content {
-  max-width: 1024px;
+  max-width: 1440px;
+  height: 100%;
   margin: 0 auto;
   padding: 32px 24px;
 }
@@ -92,4 +95,30 @@
   color: #fff;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #95b3ff;
+  padding: 20px 0;
+  position: relative;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 300s linear infinite;
+  gap: 50px;
+}
+
+.infiniteText {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: black;
+  flex-shrink: 0;
 }

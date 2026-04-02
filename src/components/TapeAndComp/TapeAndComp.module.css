@@ -53,6 +53,35 @@
   flex-shrink: 0;
 }
 
+.wrapperDemo {
+
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #95b3ff;
+  padding: 20px 0;
+  position: absolute; /* або absolute */
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.trackDemo {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 300s linear infinite;
+  gap: 50px;
+}
+
+.infiniteTextDemo {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: black;
+  flex-shrink: 0;
+}
+
 @keyframes scroll-left {
   0% {
     transform: translateX(0);

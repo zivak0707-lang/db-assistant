@@ -1,17 +1,17 @@
 .wrapper {
-  background-color: #111827;
+  background-color: #121731;
   border: 1px solid #1f2937;
-  border-radius: 12px;
-  padding: 24px;
+  padding: 20px;
+  margin-top: 128px;
   margin-bottom: 24px;
 }
 
 .label {
   display: block;
-  font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 16px;
   color: #d1d5db;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
 }
 
 .textarea {
@@ -29,8 +29,12 @@
   box-sizing: border-box;
   font-family: inherit;
 }
-.textarea::placeholder { color: #6b7280; }
-.textarea:focus { border-color: #3b82f6; }
+.textarea::placeholder {
+  color: #6b7280;
+}
+.textarea:focus {
+  border-color: #3b82f6;
+}
 
 /* Examples */
 .examples {
@@ -41,7 +45,10 @@
   align-items: center;
 }
 
-.examplesLabel { font-size: 11px; color: #6b7280; }
+.examplesLabel {
+  font-size: 11px;
+  color: #6b7280;
+}
 
 .exampleBtn {
   font-size: 11px;
@@ -54,7 +61,9 @@
   padding: 0;
   transition: color 0.15s;
 }
-.exampleBtn:hover { color: #93c5fd; }
+.exampleBtn:hover {
+  color: #93c5fd;
+}
 
 /* DB type selector */
 .dbTypeRow {
@@ -64,9 +73,16 @@
   gap: 12px;
 }
 
-.dbTypeLabel { font-size: 11px; color: #9ca3af; flex-shrink: 0; }
+.dbTypeLabel {
+  font-size: 11px;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
 
-.dbTypeButtons { display: flex; gap: 8px; }
+.dbTypeButtons {
+  display: flex;
+  gap: 8px;
+}
 
 .dbTypeBtn {
   font-size: 11px;
@@ -77,9 +93,13 @@
   color: #9ca3af;
   cursor: pointer;
   font-weight: 500;
-  transition: border-color 0.15s, color 0.15s;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
 }
-.dbTypeBtn:hover { border-color: #6b7280; }
+.dbTypeBtn:hover {
+  border-color: #6b7280;
+}
 
 .dbTypeBtnActive {
   background-color: #2563eb;
@@ -101,7 +121,9 @@
   font-size: 13px;
   transition: background-color 0.15s;
 }
-.generateBtn:hover { background-color: #3b82f6; }
+.generateBtn:hover {
+  background-color: #3b82f6;
+}
 
 .generateBtnDisabled {
   background-color: #374151 !important;
