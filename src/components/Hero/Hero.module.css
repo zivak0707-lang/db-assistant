@@ -38,20 +38,21 @@
 .buttons{
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 20px;
 }
 
 .buttonProject {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 4px;
   padding: 12px 24px;
   background-color: #95b3ff;
   color: #fff;
   font-size: 14px;
   font-weight: 500;
   border: none;
-  padding: 16px 20px;
+  height: 60px;
 }
 
 .buttonLinkMenu {
@@ -61,7 +62,7 @@
 }
 
 .buttonGit {
-    border: 1px solid #95b3ff;
+    /* border: 1px solid #95b3ff; */
     background: none;
     padding: 16px 20px;
 }
@@ -82,7 +83,7 @@
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  padding: 14px 32px;
+  padding: 12px 27px;
   background: #95B3FF;
   font-weight: 400;
   font-size: 16px;
