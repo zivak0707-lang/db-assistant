@@ -226,6 +226,9 @@ const TapeAndComp = () => {
         <p className={s.teamTitle}>КОМАНДА CODERS.EXE</p>
         <div className={s.teamImages}>
           <div className={s.devImgBlock}>
+            <div className={s.devName}>
+              <p>Zivak Serhii</p>
+            </div>
             <img src={image.serioga} className={s.serioga} alt="Serioga" />
             <img src={image.imageBottom} className={s.devBottom} />
             <div>
@@ -244,6 +247,9 @@ const TapeAndComp = () => {
             </div>
           </div>
           <div className={s.devImgBlock}>
+            <div className={s.devName}>
+              <p>Novykov Roman</p>
+            </div>
             <img src={image.roma} className={s.serioga} alt="Roma" />
             <img src={image.imageBottom} className={s.devBottom} />
             <div>
@@ -262,6 +268,9 @@ const TapeAndComp = () => {
             </div>
           </div>
           <div className={s.devImgBlock}>
+            <div className={s.devName}>
+              <p>Zelinska Yevheniia</p>
+            </div>
             <img src={image.zhenya} className={s.serioga} alt="Zhenya" />
             <img src={image.imageBottom} className={s.devBottom} />
             <div>
@@ -280,6 +289,9 @@ const TapeAndComp = () => {
             </div>
           </div>
           <div className={s.devImgBlock}>
+            <div className={s.devName}>
+              <p>Henina Lilia</p>
+            </div>
             <img src={image.lilia} className={s.serioga} alt="Lilia" />
             <img src={image.imageBottom} className={s.devBottom} />
             <div>
