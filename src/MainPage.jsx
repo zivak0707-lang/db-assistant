@@ -43,10 +43,11 @@ const MainPage = ({ onLogoClick }) => {
               db.loadFromHistory(item);
               history.setShowHistory(false);
             }}
+            onClose={() => history.setShowHistory(false)}
             onClear={history.clear}
           />
         )}
-        <div>          
+        <div>
           <div className={styles.headerWrap}>
             <a href="#" onClick={onLogoClick} className={styles.logo}>
               <img src={image.logo} alt="logo" />

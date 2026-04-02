@@ -15,12 +15,13 @@
   font-size: 13px;
   font-weight: 500;
   padding: 10px 24px;
-  border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: background-color 0.15s;
 }
-.generateBtn:hover { background-color: #16a34a; }
+.generateBtn:hover {
+  background-color: #16a34a;
+}
 .generateBtnDisabled {
   background-color: #374151 !important;
   color: #6b7280 !important;
@@ -28,7 +29,8 @@
 }
 
 /* Result view */
-.wrapper {}
+.wrapper {
+}
 
 .topRow {
   display: flex;
@@ -37,33 +39,41 @@
   margin-bottom: 12px;
 }
 
-.label { font-size: 11px; color: #6b7280; }
+.label {
+  font-size: 11px;
+  color: white;
+}
 
-.actions { display: flex; gap: 8px; }
+.actions {
+  display: flex;
+  gap: 8px;
+}
 
 .btnSecondary {
   font-size: 11px;
   background-color: #374151;
   color: #d1d5db;
   padding: 6px 12px;
-  border-radius: 6px;
   border: none;
   cursor: pointer;
   transition: background-color 0.15s;
 }
-.btnSecondary:hover { background-color: #4b5563; }
+.btnSecondary:hover {
+  background-color: #4b5563;
+}
 
 .btnGreen {
   font-size: 11px;
   background-color: #15803d;
   color: #fff;
   padding: 6px 12px;
-  border-radius: 6px;
   border: none;
   cursor: pointer;
   transition: background-color 0.15s;
 }
-.btnGreen:hover { background-color: #16a34a; }
+.btnGreen:hover {
+  background-color: #16a34a;
+}
 
 .btnDisabled {
   opacity: 0.5;
@@ -74,8 +84,8 @@
   font-size: 11px;
   color: #d1d5db;
   background-color: #1f2937;
+  border: 1px solid #95b3ff;
   padding: 16px;
-  border-radius: 8px;
   overflow: auto;
   line-height: 1.6;
   margin: 0;
