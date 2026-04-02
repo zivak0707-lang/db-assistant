@@ -6,13 +6,13 @@
   padding: 75px 109px;
   display: flex;
   justify-content: center;
-  background-image: url('../../assets/TabAndComp.svg');
+  background-image: url("../../assets/TabAndComp.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #0A0E21;
+  background-color: #0a0e21;
 }
 
-containerHello{
+containerHello {
   width: 100vw;
   max-width: 1440px;
   max-width: 100%;
@@ -21,7 +21,7 @@ containerHello{
   display: flex;
   justify-content: center;
 
-  background-color: #0A0E21;
+  background-color: #0a0e21;
 }
 
 .wrapper {
@@ -69,7 +69,7 @@ containerHello{
   background-image: url("../../assets/hello.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #0A0E21;
+  background-color: #0a0e21;
 }
 
 .description {
@@ -195,4 +195,146 @@ containerHello{
   font-size: 20px;
   color: #636c7a;
   display: flex;
+}
+
+.whyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: center;
+  background-image: url("../../assets//whySchemaForge.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0a0e21;
+  width: 100vw;
+  max-width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 75px 109px;
+}
+
+.whyText {
+  font-weight: 400;
+  font-size: 40px;
+  text-align: left;
+}
+
+.whyFeatures {
+  display: flex;
+  font-family: Helvetica;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.whyFeature {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #748ccc;
+  padding: 10px 0;
+  margin-bottom: 45px;
+}
+
+.howItWorks {
+  font-weight: 400;
+  font-size: 40px;
+  text-align: left;
+  padding-top: 78px;
+}
+
+.whyBoxes {
+  display: flex;
+  font-family: Helvetica;
+  font-weight: 400;
+  font-size: 20px;
+  align-items: flex-start;
+  gap: 75px;
+  margin-top: 30px;
+}
+
+.howBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  border: 1px solid #748ccc;
+  background-color: #121731;
+  padding: 30px;
+  margin-bottom: 45px;
+  width: 350px;
+  height: 262px;
+  text-align: left;
+}
+
+.allNeedContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-image: url("../../assets/allNeed.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0a0e21;
+  width: 100vw;
+  max-width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 75px 109px;
+}
+
+.allNeedTitle {
+  font-weight: 400;
+  font-size: 40px;
+  text-align: center;
+}
+
+.allAnswer {
+  font-family: Helvetica;
+font-weight: 400;
+font-style: Regular;
+font-size: 20px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+
+}
+
+.allAnswerBoxes{
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-top: 30px;
+}
+
+.allAnswerBoxesWrapOne{
+  display: flex;
+  flex-direction: row;
+  gap: 130px;
+  padding-right: 155px;
+}
+
+.allAnswerBoxesWrapTwo{
+  display: flex;
+  flex-direction: row;
+  gap: 130px;
+  padding-left: 155px;
+}
+
+.allAnswerBox{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  border: 1px solid #748ccc;
+  background-color: #121731;
+  padding: 30px;
+  margin-bottom: 55px;
+  width: 270px;
+  height: 262px;
+  text-align: left;
 }

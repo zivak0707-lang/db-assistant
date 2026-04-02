@@ -21,7 +21,7 @@
 .inner {
   width: 100%;
   max-width: 1331px;
-  gap: 238px;
+  gap: 200px;
   display: flex;
   flex-direction: row;
   align-items: center;
