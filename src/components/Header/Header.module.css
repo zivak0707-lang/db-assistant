@@ -1,5 +1,6 @@
 .header {
   padding: 36px 0 48px 0;
+  max-width: 1331px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -8,6 +9,8 @@
 }
 
 .inner {
+  width: 100%;
+  max-width: 1331px;
   gap: 238px;
   display: flex;
   flex-direction: row;
